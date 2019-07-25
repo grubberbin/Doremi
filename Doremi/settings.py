@@ -31,7 +31,7 @@ sys.path.insert(0, os.path.join(BASE_DIR, 'extra_apps'))
 SECRET_KEY = '4k79xg+c(15u+&)+&asqr&+v)qa0ouktsejywen%d(h7w#3x8t'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = ['*']
 
@@ -51,6 +51,7 @@ INSTALLED_APPS = [
     'classes',
     'children',
     'xadmin',
+    'crispy_forms',
 ]
 
 # UserProfile 覆盖了 Django 内置的 user 表
