@@ -29,4 +29,6 @@ urlpatterns = [
     path('checkout-page/', TemplateView.as_view(template_name='checkout-page.html'), name='checkout-page'),
     path('product-details/', TemplateView.as_view(template_name='product-details.html'), name='product-details'),
     path('contact/', TemplateView.as_view(template_name='contact.html'), name='contact'),
+    path('shop/', TemplateView.as_view(template_name='shop.html'), name='shop'),
+    path('login/',TemplateView.as_view(template_name='login.html'), name='login')
 ]

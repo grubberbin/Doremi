@@ -18,7 +18,7 @@ class BaseSetting:
 
 class GlobalSettings:
     site_title = '哆来咪后台管理系统'
-    site_footer = '哆来咪官网在线 2019-2099'
+    site_footer = '哆来咪早教园 2019-2099'
     menu_style = 'accordion'
 
 
