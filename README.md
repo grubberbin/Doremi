@@ -7,13 +7,13 @@
 - Python 3.7
 - Django 2.2.3
 - xadmin 2.0.1
-
+- Pycharm
 
 ### 网站功能
 
 
 
 
-###快速部署
+### 快速部署
 
 
