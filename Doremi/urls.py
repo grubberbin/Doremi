@@ -17,9 +17,13 @@ from django.urls import path
 import xadmin
 from . import view
 from django.views.generic import TemplateView
+from django.conf.urls import include
 
 urlpatterns = [
     path('xadmin/', xadmin.site.urls),
+    # 验证码
+    path('captcha/', include('captcha.urls')),
+
     path('index/', TemplateView.as_view(template_name='index.html'), name='index'),
     path('', TemplateView.as_view(template_name='index.html'), name='index'),
     path('events/', TemplateView.as_view(template_name='events.html'), name='events'),
