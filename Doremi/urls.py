@@ -18,6 +18,7 @@ import xadmin
 from . import view
 from django.views.generic import TemplateView
 from django.conf.urls import include
+from users.views import RegisterView,LoginView
 
 urlpatterns = [
     path('xadmin/', xadmin.site.urls),
@@ -34,5 +35,5 @@ urlpatterns = [
     path('product-details/', TemplateView.as_view(template_name='product-details.html'), name='product-details'),
     path('contact/', TemplateView.as_view(template_name='contact.html'), name='contact'),
     path('shop/', TemplateView.as_view(template_name='shop.html'), name='shop'),
-    path('login/',TemplateView.as_view(template_name='login.html'), name='login')
+    path('login/', LoginView.as_view(), name='login')
 ]
