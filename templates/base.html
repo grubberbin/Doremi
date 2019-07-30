@@ -28,11 +28,22 @@
                     <div class="contact">
                         <span class="icon fa fa-phone"></span>Call : (021) 123 456 7890
                     </div>
-                    <div class="register">
-                        <a href="#"> 注册 </a>
-                        <a href="#"> 登录 </a>
-
-                    </div>
+                    {% if request.user.is_active %}
+                        <div class="personal">
+                            <div class="userdetail">
+                                <p>{{ request.user.username }}</p>
+                                <div class="btn">
+                                    <a class="personcenter fl" href="{% url 'users:user_info' %}">进入个人中心</a>
+                                    <a class="fr" href="{% url 'logout' %}">退出</a>
+                                </div>
+                            </div>
+                        </div>
+                    {% else %}
+                        <div class="register">
+                            <a href="{% url 'register' %}"> 注册</a>
+                            <a href="{% url 'login' %}"> 登录 </a>
+                        </div>
+                    {% endif %}
 
                     <div id="top-search" class="top-search">
                         <span class="flaticon-search search"></span>
@@ -46,7 +57,7 @@
                         </ul>
                     </div>
                     <div class="cart">
-                        <a href="cart-page/"><span class="flaticon-shop"></span></a>
+                        <a href="/cart-page/"><span class="flaticon-shop"></span></a>
                     </div>
                 </div>
                 <nav class="mainmenu-area">

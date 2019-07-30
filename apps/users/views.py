@@ -9,11 +9,13 @@ from django.shortcuts import render, HttpResponse, HttpResponsePermanentRedirect
 from django.contrib.auth.hashers import make_password
 from django.urls import reverse
 
-from .forms import RegisterForm, LoginForm, ForgetForm
+from .forms import RegisterForm, LoginForm, ForgetForm, UserInfoForm
 from .models import UserProfile
+from utils.mixin_utils import LoginRequiredMixin
+
+import json
 
 
-# 让用户可以用邮箱登录
 # setting 里要有对应的配置
 class CustomBackend(ModelBackend):
     def authenticate(self, username=None, password=None, **kwargs):
@@ -26,9 +28,7 @@ class CustomBackend(ModelBackend):
 
 
 class LoginView(View):
-    # 显示注册页面
     def get(self, request):
-        # 把form传给前端,里边是验证码需要在前端显示
         login_form = LoginForm()
         return render(request, 'login.html', {'login_form': login_form})
 
@@ -37,8 +37,6 @@ class LoginView(View):
         if login_form.is_valid():
             username = request.POST.get('username', '')
             password = request.POST.get('password', '')
-
-            # 上面的 authenticate 方法 return user
             user = authenticate(username=username, password=password)
 
             if user is not None:
@@ -54,9 +52,8 @@ class LoginView(View):
 
 
 class RegisterView(View):
-    # 显示注册页面
+
     def get(self, request):
-        # 把form传给前端,里边是验证码需要在前端显示
         register_form = RegisterForm()
         return render(request, 'register.html', {'register_form': register_form})
 
@@ -64,21 +61,21 @@ class RegisterView(View):
         register_form = RegisterForm(request.POST)
         if register_form.is_valid():
             user_name = request.POST.get('username', None)
-            # 如果用户已存在，则提示错误信息
             if UserProfile.objects.filter(username=user_name):
                 return render(request, 'register.html', {'register_form': register_form, 'msg': '用户已存在'})
 
             pass_word = request.POST.get('password', None)
-            # 实例化一个user_profile对象
+            re_pass_word = request.POST.get('re-password', None)
+            if pass_word != re_pass_word:
+                return render(request, 'register.html', {'register_form': register_form, 'msg': '两次输入密码不一致'})
+
             user_profile = UserProfile()
             user_profile.username = user_name
             user_profile.email = user_name
-            user_profile.is_active = False
-            # 对保存到数据库的密码加密
+            user_profile.is_active = True
             user_profile.password = make_password(pass_word)
             user_profile.save()
-            # send_register_eamil(user_name, 'register')
-            return render(request, 'register.html')
+            return render(request, 'index.html')
         else:
             return render(request, 'register.html', {'register_form': register_form})
 
@@ -95,6 +92,26 @@ class ForgetPwdView(View):
             email = request.POST.get('email', '')
             return render(request, 'send_success.html')
         return render(request, 'forgot.html', {'forget_form': forget_form})
+
+
+# userprofile
+class UserInfoView(LoginRequiredMixin, View):
+    def get(self, request):
+        return render(request, 'usercenter-info.html')
+
+    # 用户修改昵称，手机号，地址，生日
+    def post(self, request):
+        user_info_form = UserInfoForm(request.POST, instance=request.user)
+        res = dict()
+
+        if user_info_form.is_valid():
+            user_info_form.save()
+            res['status'] = 'success'
+
+        else:
+            res = user_info_form.errors
+
+        return HttpResponse(json.dumps(res), content_type='application/json')
 
 
 # 用户登出
