@@ -52,3 +52,18 @@
 	});
 
 }());
+
+
+//注册刷新验证码点击事件
+
+$('#login_form .captcha').click({'form_id':'login_form'},refresh_captcha);
+$('#register_form .captcha').click({'form_id':'register_form'},refresh_captcha);
+
+// 刷新验证码
+function refresh_captcha(event){
+    $.get("/captcha/refresh/?"+Math.random(), function(result){
+        $('#'+event.data.form_id+' .captcha').attr("src",result.image_url);
+        $('#id_captcha_0').attr("value",result.key);
+    });
+    return false;
+}
