@@ -122,7 +122,7 @@ class LogoutView(View):
 
 
 # 全局 404 处理函数
-def page_not_found(request):
+def page_not_found(request, exception):
     from django.shortcuts import render_to_response
     response = render_to_response('404.html', {})
     response.status_code = 404

@@ -42,3 +42,7 @@ urlpatterns = [
     # 用户中心 URL 配置
     path('users/', include('users.urls', namespace='users')),
 ]
+
+# 全局 404 页面配置（django 会自动调用这个变量）
+handler404 = 'users.views.page_not_found'
+handler500 = 'users.views.page_error'
