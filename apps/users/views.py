@@ -97,7 +97,7 @@ class ForgetPwdView(View):
 # userprofile
 class UserInfoView(LoginRequiredMixin, View):
     def get(self, request):
-        return render(request, 'usercenter-info.html')
+        return render(request, 'users/usercenter-info.html')
 
     # 用户修改昵称，手机号，地址，生日
     def post(self, request):

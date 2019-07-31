@@ -27,20 +27,25 @@ urlpatterns = [
 
     path('index/', TemplateView.as_view(template_name='index.html'), name='index'),
     path('', TemplateView.as_view(template_name='index.html'), name='index'),
-    path('events/', TemplateView.as_view(template_name='events.html'), name='events'),
     path('about/', TemplateView.as_view(template_name='about.html'), name='about'),
-    path('events-detrails/', TemplateView.as_view(template_name='events-detrails.html'), name='events-detrails'),
-    path('cart-page/', TemplateView.as_view(template_name='cart-page.html'), name='cart-page'),
-    path('checkout-page/', TemplateView.as_view(template_name='checkout-page.html'), name='checkout-page'),
-    path('product-details/', TemplateView.as_view(template_name='product-details.html'), name='product-details'),
     path('contact/', TemplateView.as_view(template_name='contact.html'), name='contact'),
-    path('shop/', TemplateView.as_view(template_name='shop.html'), name='shop'),
     path('login/', LoginView.as_view(), name='login'),
     path('register/', RegisterView.as_view(), name='register'),
     path('forgot/', ForgetPwdView.as_view(), name='forgot'),
     path('logout/', LogoutView.as_view(), name='logout'),
+
+
     # 用户中心 URL 配置
     path('users/', include('users.urls', namespace='users')),
+
+    # 商城
+    path('shop/', include('shop.urls', namespace='shop')),
+
+    # 活动
+    path('events/', include('events.urls', namespace='events')),
+
+    # 新闻
+    path('news/', include('news.urls', namespace='news')),
 ]
 
 # 全局 404 页面配置（django 会自动调用这个变量）
