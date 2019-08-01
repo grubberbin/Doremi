@@ -10,9 +10,8 @@
 - Pycharm
 
 
-### 网站功能
-
-
+### 网站功能  
+   ![avatar](/Doremi/doremi.jpg)
 
 
 ### 快速部署

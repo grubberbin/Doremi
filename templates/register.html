@@ -8,7 +8,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="Free HTML5 Template by FreeHTML5.co"/>
     <meta name="keywords" content="free html5, free template, free bootstrap, html5, css3, mobile first, responsive"/>
-    <link REL="shortcut_icon" href="{% static "images/logo/favicon.ico" %}"/>
+    <link REL="shortcut icon" href="{% static "images/logo/favicon.ico" %}"/>
     <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700,300' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" href="{% static 'assets/bootstrap/css/bootstrap.min.css' %}">
     <link rel="stylesheet" href="{% static 'css/animate.css' %}">
@@ -24,9 +24,9 @@
             <form id="register_form" action="{% url 'register' %}" method="post" enctype="multipart/form-data"
                   class="fh5co-form animate-box" data-animate-effect="fadeInRight">
                 <h2>欢迎注册</h2>
-{#                <div class="form-group" style="visibility:visible;">#}
-{#                    <div class="alert alert-success" role="alert">手机验证码已发送</div>#}
-{#                </div>#}
+                {#                <div class="form-group" style="visibility:visible;">#}
+                {#                    <div class="alert alert-success" role="alert">手机验证码已发送</div>#}
+                {#                </div>#}
 
                 <div class="form-group {% if register_form.errors.username %} errorput {% endif %}">
                     <label for="name" class="sr-only">用户名</label>
@@ -35,24 +35,17 @@
                 </div>
                 <div class="form-group {% if register_form.errors.password %} errorput {% endif %}">
                     <label for="password" class="sr-only">密码</label>
-                    <input type="password" class="form-control" id="password" name="password" placeholder="请输入密码" autocomplete="off">
+                    <input type="password" class="form-control" id="password" name="password" placeholder="请输入密码"
+                           autocomplete="off">
                 </div>
                 <div class="form-group">
                     <label for="re-password" class="sr-only">重复输入密码</label>
                     <input type="password" class="form-control" id="re-password" name="re-password" placeholder="重复输入密码"
                            autocomplete="off">
                 </div>
-                <div class="form-group captcha {% if register_form.errors.captcha %} errorput {% endif %} ">
+                <div class="form-group {% if register_form.errors.captcha %} errorput {% endif %} ">
                     <label>验&nbsp;证&nbsp;码</label>
                     {{ register_form.captcha }}
-                </div>
-                <div class="error btns" id="jsEmailTips">
-                    {% for key, error in register_form.errors.items %}
-                        {{ error }}
-                    {% endfor %}
-                    {% if not register_form.errors.items %}{{ msg }}{% endif %}
-                </div>
-                <div class="auto-box marb8">
                 </div>
                 <div class="form-group">
                     <label for="remember"><input type="checkbox" id="remember"> 记住密码</label>

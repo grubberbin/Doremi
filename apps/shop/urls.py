@@ -7,8 +7,8 @@ app_name = 'shop'
 urlpatterns = [
     # 商城信息
     path('', ShopInfoView.as_view(), name='shop'),
-    path('info/', ShopInfoView.as_view(), name='shop_info'),
-    path('cart-page/', CartPageView.as_view(), name='cart-page'),
-    path('checkout-page/', CheckoutPageView.as_view(), name='checkout-page'),
-    path('product-details/', ProductInfoView.as_view(), name='product-details'),
+    path('cart/', CartPageView.as_view(), name='cart'),
+    path('order/', CheckoutPageView.as_view(), name='order'),
+    path('<int:id>/', ProductInfoView.as_view(), name='details'),
+    path('details/', ProductInfoView.as_view(), name='details'),
 ]

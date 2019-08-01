@@ -28,23 +28,6 @@
                     <div class="contact">
                         <span class="icon fa fa-phone"></span>Call : (021) 123 456 7890
                     </div>
-                    {% if request.user.is_active %}
-                        <div class="personal">
-                            <div class="userdetail">
-                                <p>{{ request.user.username }}</p>
-                                <div class="btn">
-                                    <a class="personcenter fl" href="{% url 'users:user_info' %}">进入个人中心</a>
-                                    <a class="fr" href="{% url 'logout' %}">退出</a>
-                                </div>
-                            </div>
-                        </div>
-                    {% else %}
-                        <div class="register">
-                            <a href="{% url 'register' %}"> 注册</a>
-                            <a href="{% url 'login' %}"> 登录 </a>
-                        </div>
-                    {% endif %}
-
                     <div id="top-search" class="top-search">
                         <span class="flaticon-search search"></span>
                         <ul class="search-box">
@@ -56,9 +39,18 @@
                             </li>
                         </ul>
                     </div>
-                    <div class="cart">
-                        <a href="/cart-page/"><span class="flaticon-shop"></span></a>
-                    </div>
+                    {% if request.user.is_active %}
+                        <div class="personal">
+                            <a class="fl"
+                               href="{% url 'users:user_info' %}">{{ request.user.username }}</a>
+                            <a class="fr" href="{% url 'logout' %}">退出</a>
+                        </div>
+                    {% else %}
+                        <div class="register">
+                            <a href="{% url 'register' %}"> 注册</a>
+                            <a href="{% url 'login' %}"> 登录 </a>
+                        </div>
+                    {% endif %}
                 </div>
                 <nav class="mainmenu-area">
                     <div class="navbar" role="navigation">
@@ -76,7 +68,7 @@
                         <div class="navbar-collapse collapse text-center">
                             <ul>
                                 <li><a href="/index/">主页</a></li>
-                                <li><a href="/news/">动态</a></li>
+                                <li><a href="/news/">新闻</a></li>
                                 <li class="dropdown">
                                     <a href="/events/">活动</a>
                                     <ul class="submenu">
@@ -85,11 +77,11 @@
                                     </ul>
                                 </li>
                                 <li><a href="/about/">关于</a></li>
-                                <li><a href="/about/">育儿学堂</a></li>
+                                <li><a href="/school/">育儿学堂</a></li>
                                 <li class="dropdown">
                                     <a href="/shop/">商城</a>
                                     <ul class="submenu">
-                                        <li><a href="/product-details/">商品详情</a></li>
+                                        <li><a href="/shop/details/">商品详情</a></li>
                                         <li><a href="/cart-page/">购物车</a></li>
                                         <li><a href="/checkout-page/">订单页</a></li>
                                     </ul>
@@ -174,10 +166,10 @@
                     <div class="menu">
                         <ul class="clearfix">
                             <li><a href="/index/">home</a></li>
-                            <li><a href="/event/">event</a></li>
-                            <li><a href="/blog/">page</a></li>
-                            <li><a href="/gallery/">gallery</a></li>
                             <li><a href="/news/">news</a></li>
+                            <li><a href="/events/">events</a></li>
+                            <li><a href="/about/">about</a></li>
+                            <li><a href="/school/">c</a></li>
                             <li><a href="/shop/">shop</a></li>
                             <li><a href="/contact/">contact</a></li>
                         </ul>
