@@ -4,102 +4,54 @@
 {% block title %}联系我们 - 哆唻咪启蒙乐园{% endblock %}
 
 {% block custom_content %}
-<section class="map-section">
-    <div class="google-map" id="contact-google-map" data-map-lat="37.668705" data-map-lng="-121.882048" data-map-title="Awesome Place" data-map-zoom="12">
-        
-    </div>
-    <div class="container">
-        <ul>
-            <li><a href="/index/">home</a></li>
-            <li><a href="/about/">contact us</a></li>
-        </ul>
-    </div>
-</section>
-
-<section class="contact-us">
-    <div class="upper">
+    <section class="page-title center">
         <div class="container">
-            <div class="row">
-                <div class="col-md-4 col-sm-6 col-xs-12 column">
-                    <div class="item center">
-                        <div class="icon">
-                            <span class="icon-location"></span>
-                        </div>
-                        <div class="content">
-                            <h4><a href="#">Address</a></h4>
-                            <p>Nashville 09 First Floor Downtown <br> st, Victoria, Australia - 0078</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-4 col-sm-6 col-xs-12 column">
-                    <div class="item center">
-                        <div class="icon">
-                            <span class="icon-technology-2"></span>
-                        </div>
-                        <div class="content">
-                            <h4><a href="#">Phone number</a></h4>
-                            <p>021 - 123 456 7890</p>
-                            <p>021 - 123 456 7893</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-4 col-sm-6 col-xs-12 column">
-                    <div class="item center">
-                        <div class="icon">
-                            <span class="icon-interface"></span>
-                        </div>
-                        <div class="content">
-                            <h4><a href="#">Email id</a></h4>
-                            <p>Nashville@Support.com </p>
-                            <p>YourAddress@info.com</p>
-                        </div>
-                    </div>
+            <h2>contact us</h2>
+            <ul>
+                <li><a href="/">主页</a></li>
+                <li><a href="/contact/">联系我们</a></li>
+            </ul>
+        </div>
+    </section>
+    <section class="contact-us">
+        <div class="container">
+            <div class="section-title center">
+                <div class="drop-message">
+                    <h2>给我们 <span>留言</span></h2>
                 </div>
             </div>
         </div>
-        
-    </div>
-    <div class="container">
-        <div class="section-title center">
-                <h2>Drop A <span>message</span></h2>
-            </div>
         <div class="row">
             <div class="col-md-6 col-md-offset-3 col-sm-12">
                 <div class="contact-box">
 
-                    <form method="post" action="sendemail.php" class="contact-form" novalidate="novalidate">
-                            
+                    <form method="post" action="{% url 'contact:contact' %}" class="contact-form"
+                          novalidate="novalidate">
+                        {% csrf_token %}
                         <div class="row clearfix">
+
                             <div class="form-group col-lg-6 col-md-6 col-xs-12">
-                                <input type="text" name="username" value="" placeholder="First Name*">
+                                <input type="text" name="username" value="" placeholder="姓名*">
                             </div>
 
                             <div class="form-group col-lg-6 col-md-6 col-xs-12">
-                                <input type="text" name="username" value="" placeholder="Last Name*">
-                            </div>
-                            
-                            <div class="form-group col-lg-6 col-md-6 col-xs-12">
-                                <input type="email" name="email" value="" placeholder="Email*">
+                                <input type="text" name="phone" value="" placeholder="联系方式*">
                             </div>
 
-
-                            <div class="form-group col-lg-6 col-md-6 col-xs-12">
-                                <input type="text" name="phone" value="" placeholder="Phone No">
-                            </div>
-                            
-                            
                             <div class="form-group col-lg-12 col-sm-12 col-xs-12">
-                                <textarea name="message" placeholder="Message"></textarea>
+                                <textarea name="message" placeholder="在这里写下您要对我们说的话吧(500个字)。。。"></textarea>
                             </div>
-
+                            <div class="error btns login-form-tips" id="jsLoginTips">
+                                {{ msg }}
+                            </div>
                             <div class="form-group col-lg-12 center">
-                                <button type="submit" name="submit" class="btn-style-one center">Submit now</button>
+                                <button type="submit" name="submit" class="btn-style-one center">提交
+                                </button>
                             </div>
                         </div>
                     </form>
                 </div>
             </div>
         </div>
-    </div>
-</section>
+    </section>
 {% endblock %}

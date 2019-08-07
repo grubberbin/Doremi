@@ -25,9 +25,6 @@
 
             <div class="nav-outer">
                 <div class="header-top">
-                    <div class="contact">
-                        <span class="icon fa fa-phone"></span>Call : (021) 123 456 7890
-                    </div>
                     <div id="top-search" class="top-search">
                         <span class="flaticon-search search"></span>
                         <ul class="search-box">
@@ -39,16 +36,19 @@
                             </li>
                         </ul>
                     </div>
-                    {% if request.user.is_active %}
+
+                    <div class="contact">
+                        <span class="icon fa fa-phone"></span>Call : (021) 123 456 7890
+                    </div>
+                    {% if request.user.is_authenticated %}
                         <div class="personal">
-                            <a class="fl"
-                               href="{% url 'users:user_info' %}">{{ request.user.username }}</a>
-                            <a class="fr" href="{% url 'logout' %}">退出</a>
+                            <a href="{% url 'users:user_info' %}">{{ request.user.username }}</a>
+                            <a href="{% url 'users:logout' %}">退出</a>
                         </div>
                     {% else %}
                         <div class="register">
-                            <a href="{% url 'register' %}"> 注册</a>
-                            <a href="{% url 'login' %}"> 登录 </a>
+                            <a href="{% url 'users:register' %}"> 注册</a>
+                            <a href="{% url 'users:login' %}"> 登录 </a>
                         </div>
                     {% endif %}
                 </div>

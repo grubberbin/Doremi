@@ -4,4 +4,29 @@
 {% block title %}个人中心 - 哆唻咪启蒙乐园{% endblock %}
 
 {% block custom_content %}
+    <section class="page-title center">
+        <div class="container">
+            <h2>个人中心</h2>
+            <ul>
+                <li><a href="{% url 'index' %}">主页</a></li>
+                <li><a href="about.html">个人中心</a></li>
+            </ul>
+        </div>
+    </section>
+    <section class="page-container"
+    <div class="layui-form-item">
+        <div class="layui-inline">
+            <label class="layui-form-label">验证手机</label>
+            <div class="layui-input-inline">
+                <input type="tel" name="phone" lay-verify="required|phone" autocomplete="off" class="layui-input">
+            </div>
+        </div>
+        <div class="layui-inline">
+            <label class="layui-form-label">验证邮箱</label>
+            <div class="layui-input-inline">
+                <input type="text" name="email" lay-verify="email" autocomplete="off" class="layui-input">
+            </div>
+        </div>
+    </div>
+    </section>
 {% endblock %}

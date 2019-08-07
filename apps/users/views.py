@@ -5,7 +5,7 @@ from django.views.generic.base import View
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.backends import ModelBackend
 from django.db.models import Q
-from django.shortcuts import render, HttpResponse, HttpResponsePermanentRedirect
+from django.shortcuts import render, HttpResponse, HttpResponsePermanentRedirect, render_to_response
 from django.contrib.auth.hashers import make_password
 from django.urls import reverse
 
@@ -30,7 +30,7 @@ class CustomBackend(ModelBackend):
 class LoginView(View):
     def get(self, request):
         login_form = LoginForm()
-        return render(request, 'login.html', {'login_form': login_form})
+        return render(request, 'users/login.html', {'login_form': login_form})
 
     def post(self, request):
         login_form = LoginForm(request.POST)
@@ -40,34 +40,33 @@ class LoginView(View):
             user = authenticate(username=username, password=password)
 
             if user is not None:
-                if user.is_active:
-                    login(request, user)
-                    return HttpResponsePermanentRedirect(reverse('index'))
-                return render(request, 'login.html', {'msg': '用户未激活！'})
-            return render(request, 'login.html', {'msg': '用户名或者密码错误！'})
+                login(request, user)
+                print(request.user.username)
+                return HttpResponsePermanentRedirect(reverse('index'))
+            return render(request, 'users/login.html', {'msg': '用户名或者密码错误！'})
         else:
             print('login data error')
             login_form = LoginForm()
-            return render(request, 'login.html', {'login_form': login_form})
+            return render(request, 'users/login.html', {'login_form': login_form})
 
 
 class RegisterView(View):
 
     def get(self, request):
         register_form = RegisterForm()
-        return render(request, 'register.html', {'register_form': register_form})
+        return render(request, 'users/register.html', {'register_form': register_form})
 
     def post(self, request):
         register_form = RegisterForm(request.POST)
         if register_form.is_valid():
             user_name = request.POST.get('username', None)
             if UserProfile.objects.filter(username=user_name):
-                return render(request, 'register.html', {'register_form': register_form, 'msg': '用户已存在'})
+                return render(request, 'users/register.html', {'register_form': register_form, 'msg': '用户已存在'})
 
             pass_word = request.POST.get('password', None)
             re_pass_word = request.POST.get('re-password', None)
             if pass_word != re_pass_word:
-                return render(request, 'register.html', {'register_form': register_form, 'msg': '两次输入密码不一致'})
+                return render(request, 'users/register.html', {'register_form': register_form, 'msg': '两次输入密码不一致'})
 
             user_profile = UserProfile()
             user_profile.username = user_name
@@ -77,21 +76,21 @@ class RegisterView(View):
             user_profile.save()
             return render(request, 'index.html')
         else:
-            return render(request, 'register.html', {'register_form': register_form})
+            return render(request, 'users/register.html', {'register_form': register_form})
 
 
 # 忘记密码页面
 class ForgetPwdView(View):
     def get(self, request):
         forget_form = ForgetForm()
-        return render(request, 'forgot.html', {'forget_form': forget_form})
+        return render(request, 'users/forgot.html', {'forget_form': forget_form})
 
     def post(self, request):
         forget_form = ForgetForm(request.POST)
         if forget_form.is_valid():
             email = request.POST.get('email', '')
             return render(request, 'send_success.html')
-        return render(request, 'forgot.html', {'forget_form': forget_form})
+        return render(request, 'users/forgot.html', {'forget_form': forget_form})
 
 
 # userprofile
@@ -118,6 +117,7 @@ class UserInfoView(LoginRequiredMixin, View):
 class LogoutView(View):
     def get(self, request):
         logout(request)
+        print('logout', request)
         return HttpResponsePermanentRedirect(reverse('index'))
 
 

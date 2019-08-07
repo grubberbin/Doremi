@@ -18,7 +18,6 @@ from django.views.generic import TemplateView
 from django.conf.urls import include
 
 import xadmin
-from users.views import RegisterView, LoginView, ForgetPwdView, LogoutView
 from .view import IndexView
 
 urlpatterns = [
@@ -31,11 +30,6 @@ urlpatterns = [
     path('index/', IndexView.as_view(), name='index'),
 
     path('about/', TemplateView.as_view(template_name='about.html'), name='about'),
-    path('contact/', TemplateView.as_view(template_name='contact.html'), name='contact'),
-    path('login/', LoginView.as_view(), name='login'),
-    path('register/', RegisterView.as_view(), name='register'),
-    path('forgot/', ForgetPwdView.as_view(), name='forgot'),
-    path('logout/', LogoutView.as_view(), name='logout'),
 
     # 用户中心 URL 配置
     path('users/', include('users.urls', namespace='users')),
@@ -48,6 +42,9 @@ urlpatterns = [
 
     # 新闻
     path('news/', include('news.urls', namespace='news')),
+
+    # 联系我们
+    path('contact/', include('contact.urls', namespace='contact')),
 ]
 
 # 全局 404 页面配置（django 会自动调用这个变量）

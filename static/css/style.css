@@ -128,24 +128,18 @@ header .main-header .header-top {
     font-family: 'dosis';
 }
 
+.header-top .personal {
+    position: relative;
+    display: inline-block;
+    padding: 19px 20px;
+}
+
 .header-top .personal a {
-    font-size: 18px;
+    font-size: 16px;
     color: #999;
     font-family: 'dosis-bold';
 }
 
-.header-top .personal fl {
-    position: relative;
-    margin-right: 9px;
-}
-
-.header-top #polyglotLanguageSwitcher {
-    position: relative;
-    display: inline-block;
-    margin-right: 9px;
-    padding: 17px 0;
-
-}
 
 #polyglotLanguageSwitcher a.current:link,
 #polyglotLanguageSwitcher a.current:visited,
@@ -157,17 +151,6 @@ header .main-header .header-top {
     font-size: 16px;
     color: #999;
     font-family: 'dosis';
-}
-
-
-#polyglotLanguageSwitcher span.trigger:before {
-    position: absolute;
-    left: -25px;
-    top: 9px;
-    content: "\f107";
-    font-size: 12px;
-    color: #999;
-    font-family: FontAwesome;
 }
 
 
@@ -4334,6 +4317,7 @@ body.popup-visible {
 }
 
 .contact-us .section-title {
+    margin-top: 80px;
     margin-bottom: 40px;
 }
 
