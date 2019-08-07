@@ -16,6 +16,5 @@ from users.models import UserProfile
 class IndexView(View):
 
     def get(self, request):
-        ck = request.session.get("username")
-        print(ck)
+        #ck = request.session.get("username")
         return render(request, 'index.html')
