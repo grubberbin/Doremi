@@ -6,7 +6,16 @@
 # @Software : PyCharm
 
 
-from django.http import HttpResponse
+from django.shortcuts import render, redirect
+from django.views.generic.base import View
+# Create your views here.
 
-def index(request):
-    return HttpResponse('Wecome Doremi!')
+from users.models import UserProfile
+
+
+class IndexView(View):
+
+    def get(self, request):
+        ck = request.session.get("username")
+        print(ck)
+        return render(request, 'index.html')

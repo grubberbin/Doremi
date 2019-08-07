@@ -19,21 +19,23 @@ from django.conf.urls import include
 
 import xadmin
 from users.views import RegisterView, LoginView, ForgetPwdView, LogoutView
+from .view import IndexView
 
 urlpatterns = [
     path('xadmin/', xadmin.site.urls),
     # 验证码
     path('captcha/', include('captcha.urls')),
 
-    path('index/', TemplateView.as_view(template_name='index.html'), name='index'),
-    path('', TemplateView.as_view(template_name='index.html'), name='index'),
+    # 主页
+    path('', IndexView.as_view(), name='index'),
+    path('index/', IndexView.as_view(), name='index'),
+
     path('about/', TemplateView.as_view(template_name='about.html'), name='about'),
     path('contact/', TemplateView.as_view(template_name='contact.html'), name='contact'),
     path('login/', LoginView.as_view(), name='login'),
     path('register/', RegisterView.as_view(), name='register'),
     path('forgot/', ForgetPwdView.as_view(), name='forgot'),
     path('logout/', LogoutView.as_view(), name='logout'),
-
 
     # 用户中心 URL 配置
     path('users/', include('users.urls', namespace='users')),

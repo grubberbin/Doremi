@@ -19,7 +19,7 @@
         <div class="container">
             <div class="logo pull-left">
                 <a href="{% url 'index' %}">
-                    <img src="../../static/images/logo/1.png" alt="Awesome Image">
+                    <img src="{% static 'images/logo/1.png' %}" alt="Awesome Image">
                 </a>
             </div>
 
@@ -28,22 +28,6 @@
                     <div class="contact">
                         <span class="icon fa fa-phone"></span>Call : (021) 123 456 7890
                     </div>
-                    {% if request.user.is_active %}
-                        <div class="personal">
-                            <div class="userdetail">
-                                <p>{{ request.user.username }}</p>
-                                <div class="btn">
-                                    <a class="personcenter fl" href="{% url 'users:user_info' %}">进入个人中心</a>
-                                    <a class="fr" href="{% url 'logout' %}">退出</a>
-                                </div>
-                            </div>
-                        </div>
-                    {% else %}
-                        <div class="register">
-                            <a href="{% url 'register' %}"> 注册</a>
-                            <a href="{% url 'login' %}"> 登录 </a>
-                        </div>
-                    {% endif %}
 
                     <div id="top-search" class="top-search">
                         <span class="flaticon-search search"></span>
@@ -56,9 +40,22 @@
                             </li>
                         </ul>
                     </div>
-                    <div class="cart">
-                        <a href="/cart-page/"><span class="flaticon-shop"></span></a>
-                    </div>
+
+                    {% if request.user.is_active %}
+                        <div class="personal">
+                            <p>{{ request.user.username }}</p>
+                            <div class="btn">
+                                <a class="personcenter fl" href="{% url 'users:user_info' %}">进入个人中心</a>
+                                <a class="fr" href="{% url 'logout' %}">退出</a>
+                            </div>
+                        </div>
+                    {% else %}
+                        <div class="register">
+                            <a href="{% url 'register' %}"> 注册</a>
+                            <a href="{% url 'login' %}"> 登录 </a>
+                        </div>
+                    {% endif %}
+
                 </div>
                 <nav class="mainmenu-area">
                     <div class="navbar" role="navigation">
@@ -109,101 +106,36 @@
 
 {% endblock %}
 
+<section class="footer">
+    <div class="footer-bottom">
+        <div class="footer-bottom-bg">
+            <div class="container">
+                <div class="pull-left">
+                    <figure><a href="#"><img src="{% static 'images/logo/2.png' %}" alt=""></a></figure>
+                </div>
+                <div class="pull-right">
+                    <div class="menu">
+                        <ul class="clearfix">
+                            <li><a href="/index/">home</a></li>
+                            <li><a href="/news/">news</a></li>
+                            <li><a href="/events/">events</a></li>
+                            <li><a href="/about/">about</a></li>
+                            <li><a href="/care-home/">care-home</a></li>
+                            <li><a href="/shop/">shop</a></li>
+                            <li><a href="/contact/">contact</a></li>
+                        </ul>
+                    </div>
+                    <div class="copy-right">
+                        Copyright &copy; 2019 - 2019 Dorimi.Company
+                    </div>
+                </div>
+            </div>
+        </div>
 
+    </div>
+</section>
 <!--Scroll to top-->
 <div class="scroll-to-top"><i class="fa fa-long-arrow-up"></i></div>
-<!--Gallery Popup-->
-<div class="gallery-box" id="gallery-popup">
-    <!--Bg Fade Layer-->
-    <div class="bg-fade-layer"></div>
-
-    <div class="popup-container">
-        <div class="popup-content">
-
-            <div class="popup-header">
-                <button type="button" class="btn-close"><span class="fa fa-close"></span></button>
-                <h3>Opening Remark</h3>
-            </div>
-
-            <div class="content-outer">
-
-                <!--Vertical Slider-->
-                <div class="vertical-slider">
-
-                    <!-- template -->
-                    <div class="ms-vertical-template  ms-tabs-vertical-template">
-                        <!-- masterslider -->
-                        <div class="master-slider ms-skin-default" id="masterslider">
-
-                            <div class="ms-slide">
-                                <img src="../../static/css/masterslider/style/blank.gif"
-                                     data-src="../static/images/gallery/1.jpg"
-                                     alt="">
-                                <img class="ms-thumb" src="../../static/images/gallery/1.jpg" alt="thumb"/>
-                            </div>
-
-                            <div class="ms-slide">
-                                <img src="../../static/css/masterslider/style/blank.gif"
-                                     data-src="../static/images/gallery/2.jpg"
-                                     alt="">
-                                <img class="ms-thumb" src="../../static/images/gallery/2.jpg" alt="thumb"/>
-                            </div>
-
-                            <div class="ms-slide">
-                                <img src="../../static/css/masterslider/style/blank.gif"
-                                     data-src="../static/images/gallery/3.jpg"
-                                     alt="">
-                                <img class="ms-thumb" src="../../static/images/gallery/3.jpg" alt="thumb"/>
-                            </div>
-
-                            <div class="ms-slide">
-                                <img src="../../static/css/masterslider/style/blank.gif"
-                                     data-src="../static/images/gallery/4.jpg"
-                                     alt="">
-                                <img class="ms-thumb" src="../../static/images/gallery/4.jpg" alt="thumb"/>
-                            </div>
-
-                            <div class="ms-slide">
-                                <img src="../../static/css/masterslider/style/blank.gif"
-                                     data-src="../static/images/gallery/5.jpg"
-                                     alt="">
-                                <img class="ms-thumb" src="../../static/images/gallery/5.jpg" alt="thumb"/>
-                            </div>
-
-                            <div class="ms-slide">
-                                <img src="../../static/css/masterslider/style/blank.gif"
-                                     data-src="../static/images/gallery/6.jpg"
-                                     alt="">
-                                <img class="ms-thumb" src="../../static/images/gallery/6.jpg" alt="thumb"/>
-                            </div>
-                            <div class="ms-slide">
-                                <img src="../../static/css/masterslider/style/blank.gif"
-                                     data-src="../static/images/gallery/7.jpg"
-                                     alt="">
-                                <img class="ms-thumb" src="../../static/images/gallery/7.jpg" alt="thumb"/>
-                            </div>
-                            <div class="ms-slide">
-                                <img src="../../static/css/masterslider/style/blank.gif"
-                                     data-src="../static/images/gallery/8.jpg"
-                                     alt="">
-                                <img class="ms-thumb" src="../../static/images/gallery/8.jpg" alt="thumb"/>
-                            </div>
-
-
-                        </div>
-                        <!-- end of masterslider -->
-                    </div>
-                    <!-- end of template -->
-
-                </div>
-
-            </div>
-
-        </div>
-        <!--popup-content -->
-    </div>
-    <!-- popup-container -->
-</div>
 
 <!-- Gallery Box -->
 <!-- jQuery js -->a
