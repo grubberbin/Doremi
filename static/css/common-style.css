@@ -4,8 +4,6 @@
  * 1.1 -> Basic Structure
  * -----------------------------------------------
 */
-
-
 @import url(../assets/bootstrap/css/bootstrap.min.css);
 @import url(../assets/font-awesome/css/font-awesome.min.css);
 @import url(../assets/revolution/css/settings.css);
@@ -36,38 +34,44 @@
     font-family: 'dosis-bold';
     src: url(../assets/fonts/Dosis/Dosis-Bold.ttf);
 }
+
 @font-face {
     font-family: 'dosis-wxtrabold';
     src: url(../../static/assets/fonts/Dosis/Dosis-ExtraBold.ttf);
 }
+
 @font-face {
     font-family: 'dosis-extralight';
     src: url(../../static/assets/fonts/Dosis/Dosis-ExtraLight.ttf);
 }
+
 @font-face {
     font-family: 'dosis-light';
     src: url(../../static/assets/fonts/Dosis/Dosis-Light.ttf);
 }
+
 @font-face {
     font-family: 'dosis-medium';
     src: url(../assets/fonts/Dosis/Dosis-Medium.ttf);
 }
+
 @font-face {
     font-family: 'dosis-semibold';
     src: url(../assets/fonts/Dosis/Dosis-SemiBold.ttf);
 }
+
 @font-face {
     font-family: 'dosis';
     src: url(../assets/fonts/Dosis/Dosis-Regular.ttf);
 }
+
 @font-face {
     font-family: 'Rancho';
     src: url(../../static/assets/fonts/Rancho/Rancho-Regular.ttf);
 }
 
 
-
-/*** 
+/***
 
 ====================================================================
 	Reset
@@ -77,10 +81,10 @@
 
 
 * {
-	margin:0px;
-	padding:0px;
-	border:none;
-	outline:none;
+    margin: 0px;
+    padding: 0px;
+    border: none;
+    outline: none;
 }
 
 /*** 
@@ -92,154 +96,172 @@
  ***/
 
 body {
-	font-size:16px;
-	color:#292929;
-	font-weight:400;
-	background:#ffffff;
+    font-size: 16px;
+    color: #292929;
+    font-weight: 400;
+    background: #ffffff;
 }
 
 @media (min-width: 1200px) {
-  .container {
-    padding: 0;
-  }
+    .container {
+        padding: 0;
+    }
 }
 
-a{
-	text-decoration:none;
-	cursor:pointer;	
-	font-family: 'bubblegum';
-	color: #333;
+a {
+    text-decoration: none;
+    cursor: pointer;
+    font-family: 'bubblegum';
+    color: #333;
 }
-.dosis{	
-	font-family: 'dosis';
+
+.dosis {
+    font-family: 'dosis';
 }
 
 
 .normal {
-	font-weight: 400;
+    font-weight: 400;
 }
+
 .medium {
-	font-weight: 500;
+    font-weight: 500;
 }
+
 .semibold {
-	font-weight: 600;
+    font-weight: 600;
 }
+
 .bold {
-	font-weight: 700;
+    font-weight: 700;
 }
+
 .capitalize {
-	text-transform: capitalize;
+    text-transform: capitalize;
 }
+
 .uppercase {
-	text-transform: uppercase;
+    text-transform: uppercase;
 }
 
 .theme-color {
-	color: #ff9a00 !important;
+    color: #ff9a00 !important;
 }
+
 .row-10 {
-	margin: 0 -10px;
+    margin: 0 -10px;
 }
 
-a:hover,a:focus,a:visited{
-	text-decoration:none;
-	outline:none;
+a:hover, a:focus, a:visited {
+    text-decoration: none;
+    outline: none;
 }
 
-h1,h2,h3,h4,h5,h6 {
-	position:relative;
-	font-family: 'bubblegum';
-	margin:0px;
-	background:none;
-	color: #232323;
-}
-
-
-
-input,button,select,textarea{
-	font-family: 'dosis';	
+h1, h2, h3, h4, h5, h6 {
+    position: relative;
+    font-family: 'bubblegum';
+    margin: 0px;
+    background: none;
+    color: #232323;
 }
 
 
-p{
-	position:relative;
-	font-family: 'dosis';
-	line-height: 28px;
-	color: #888;
-	margin: 0px;
-	font-size: 18px;
-		
+input, button, select, textarea {
+    font-family: 'dosis';
+}
+
+
+p {
+    position: relative;
+    font-family: 'dosis';
+    line-height: 28px;
+    color: #888;
+    margin: 0px;
+    font-size: 18px;
+
 }
 
 
 .hvr-sweep-to-top:before {
     background: #000;
 }
+
 .hvr-bounce-to-right:before {
     background: #000;
 }
 
 
-ul,li{
-	list-style:none;
-	padding:0px;
-	margin:0px;	
+ul, li {
+    list-style: none;
+    padding: 0px;
+    margin: 0px;
 }
 
 
-.center{
-	text-align:center;	
+.center {
+    text-align: center;
 }
 
-.left{
-	text-align:left !important;	
+.left {
+    text-align: left !important;
 }
 
-.right{
-	text-align:right;	
+.right {
+    text-align: right;
 }
 
-.out{
-	opacity:0;
-	filter:alpha(opacity=0);	
+.out {
+    opacity: 0;
+    filter: alpha(opacity=0);
 }
 
-.in{
-	opacity:1;
-	filter:alpha(opacity=100);	
+.in {
+    opacity: 1;
+    filter: alpha(opacity=100);
 }
 
-.uppercase{
-	text-transform:uppercase !important;	
+.uppercase {
+    text-transform: uppercase !important;
 }
 
-.capitalized{
-	text-transform:capitalize !important;	
+.capitalized {
+    text-transform: capitalize !important;
 }
 
-.lowercase{
-	text-transform:lowercase !important;	
+.lowercase {
+    text-transform: lowercase !important;
 }
 
-.no-margin{
-	margin:0px !important;	
+.no-margin {
+    margin: 0px !important;
 }
 
-.no-float{
-	float:none !important;	
+.no-float {
+    float: none !important;
 }
 
 
 .no-padd {
-	padding: 0px !important;	
+    padding: 0px !important;
 }
 
 
-.preloader{ position:fixed; left:0px; top:0px; width:100%; height:100%; z-index:999999; background-color:#ffffff; background-position:center center; background-repeat:no-repeat; background-image:url(../images/icons/preloader.gif);}
+.preloader {
+    position: fixed;
+    left: 0px;
+    top: 0px;
+    width: 100%;
+    height: 100%;
+    z-index: 999999;
+    background-color: #ffffff;
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-image: url(../images/icons/preloader.gif);
+}
 
 
 .btn-style-one {
-	position: relative;
+    position: relative;
     font-size: 20px;
     border: 2px solid transparent;
     text-transform: capitalize;
@@ -253,45 +275,47 @@ ul,li{
 }
 
 .btn-style-one:hover {
-	background: rgba(0, 0, 0, 0.84) !important;
-	transition: .5s ease-in;
-	color: #fff;
-	transition: .5s ease-in !important;
+    background: rgba(0, 0, 0, 0.84) !important;
+    transition: .5s ease-in;
+    color: #fff;
+    transition: .5s ease-in !important;
 }
 
 
 .btn-style-two {
-	position: relative;
-	font-size: 13px;
-	text-transform: uppercase;
-	font-weight: 700;
-	color: #fff;
-	background: transparent;
-	border: 2px solid #fff;
-	padding: 15px 35px;
-	border-radius: 50px;
-	transition: .5s ease-in !important;
-	line-height: 2px;
+    position: relative;
+    font-size: 13px;
+    text-transform: uppercase;
+    font-weight: 700;
+    color: #fff;
+    background: transparent;
+    border: 2px solid #fff;
+    padding: 15px 35px;
+    border-radius: 50px;
+    transition: .5s ease-in !important;
+    line-height: 2px;
 }
 
 .btn-style-two:hover {
-	border-color: transparent;
-	transition: .5s ease-in !important;
+    border-color: transparent;
+    transition: .5s ease-in !important;
 }
-
 
 
 .btn-bg-1 {
-	background: #08c1d7;
+    background: #08c1d7;
 }
+
 .btn-bg-2 {
-	background: #fe702a;
+    background: #fe702a;
 }
+
 .btn-bg-3 {
-	background: #b75af3;
+    background: #b75af3;
 }
+
 .btn-bg-4 {
-	background: #000;
+    background: #000;
 }
 
 /***
@@ -309,18 +333,19 @@ ul,li{
     right: 10px;
     width: 45px;
     height: 45px;
-	box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
+    box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
     background: #fff;
     border-radius: 50%;
     margin: 0;
     text-align: center;
     z-index: 999999999;
     cursor: pointer;
-	display:none;	
+    display: none;
     opacity: .8;
     transition: .3s ease-in;
 
 }
+
 .scroll-to-top i:before {
     color: #ff9a00;
     font-size: 20px;
@@ -331,34 +356,32 @@ ul,li{
 .scroll-to-top:hover {
     opacity: 1;
     transition: .3s ease-in;
-	box-shadow: 0 5px 11px 0 rgba(0, 0, 0, 0.18), 0 4px 15px 0 rgba(0, 0, 0, 0.15);
+    box-shadow: 0 5px 11px 0 rgba(0, 0, 0, 0.18), 0 4px 15px 0 rgba(0, 0, 0, 0.15);
 }
 
 .span-1 {
-	width: 100%;
-	float: left;
+    width: 100%;
+    float: left;
 }
+
 .span-2 {
-	width: 50%;
-	float: left;
+    width: 50%;
+    float: left;
 }
 
 .span-3 {
-	width: 33.3333333333% !important;
-	float: left;
+    width: 33.3333333333% !important;
+    float: left;
 }
 
 .span-4 {
-	width: 25% !important;
-	float: left;
+    width: 25% !important;
+    float: left;
 }
 
 
-
-
-
 .mr-23 {
-	margin-right: 23px;
+    margin-right: 23px;
 }
 
 [class^="flaticon-"]:before, [class*=" flaticon-"]:before, [class^="flaticon-"]:after, [class*=" flaticon-"]:after {
@@ -366,56 +389,62 @@ ul,li{
 }
 
 .bg-p {
-	background-position: center center !important;
-	background-size: cover !important;
-	background-repeat: no-repeat !important;
+    background-position: center center !important;
+    background-size: cover !important;
+    background-repeat: no-repeat !important;
 }
 
 .pb-15 {
-	padding-bottom: 15px !important;
+    padding-bottom: 15px !important;
 }
+
 .pt-99 {
-	padding-top: 99px !important;
+    padding-top: 99px !important;
 }
+
 .pt-100 {
-	padding-top: 100px !important;
+    padding-top: 100px !important;
 }
+
 .pt-72 {
-	padding-top: 72px !important;
+    padding-top: 72px !important;
 }
 
 .mb-6 {
-	margin-bottom: 6px !important;
+    margin-bottom: 6px !important;
 }
+
 .mt-13 {
-	margin-top: 13px !important;
+    margin-top: 13px !important;
 }
 
 .mt-65 {
-	margin-top: 65px !important;
+    margin-top: 65px !important;
 }
+
 .mt-72 {
-	margin-top: 72px !important;
+    margin-top: 72px !important;
 }
 
 .ml-40 {
-	margin-left: 40px !important;
+    margin-left: 40px !important;
 }
+
 .mr-40 {
-	margin-right: 40px !important;
+    margin-right: 40px !important;
 }
+
 .ml-25 {
-	margin-left: 25px !important;
+    margin-left: 25px !important;
 }
 
 .pl-46 {
-	padding-left: 46px !important;
+    padding-left: 46px !important;
 }
+
 .pl-32 {
-	padding-left: 32px !important;
+    padding-left: 32px !important;
 }
-
-
 
 
 /*========== section title ================ */
@@ -429,34 +458,32 @@ ul,li{
     color: #8a7bd1;
     padding-bottom: 23px;
 }
+
 .section-title h2 span {
     color: #f8b54d;
 }
 
 .section-title h2:after {
-	position:absolute;
-	content: "";
-	left:0px;
-	bottom:0px;
-	width:100%;
-	height:10px;
-	background:url(../images/icons/sep-1.png) center left no-repeat;
+    position: absolute;
+    content: "";
+    left: 0px;
+    bottom: 0px;
+    width: 100%;
+    height: 10px;
+    background: url(../images/icons/sep-1.png) center left no-repeat;
 }
+
 .section-title.center h2:after {
-	background:url(../images/icons/sep-1.png) center center no-repeat !important;
+    background: url(../images/icons/sep-1.png) center center no-repeat !important;
 }
+
 .section-title.sep-2 h2:after {
-	background:url(../images/icons/sep-2.png) center center no-repeat !important;
+    background: url(../images/icons/sep-2.png) center center no-repeat !important;
 }
 
 .section-title.pb-60 {
-	padding-bottom: 60px;
+    padding-bottom: 60px;
 }
-
-
-
-
-
 
 
 ::-webkit-input-placeholder {
