@@ -41,18 +41,15 @@
                         </ul>
                     </div>
 
-                    {% if request.user.is_active %}
+                    {% if request.user.is_authenticated %}
                         <div class="personal">
-                            <p>{{ request.user.username }}</p>
-                            <div class="btn">
-                                <a class="personcenter fl" href="{% url 'users:user_info' %}">进入个人中心</a>
-                                <a class="fr" href="{% url 'logout' %}">退出</a>
-                            </div>
+                            <a href="{% url 'users:user_info' %}">{{ request.user.username }}</a>
+                            <a href="{% url 'users:logout' %}">退出</a>
                         </div>
                     {% else %}
                         <div class="register">
-                            <a href="{% url 'register' %}"> 注册</a>
-                            <a href="{% url 'login' %}"> 登录 </a>
+                            <a href="{% url 'users:register' %}"> 注册</a>
+                            <a href="{% url 'users:login' %}"> 登录 </a>
                         </div>
                     {% endif %}
 

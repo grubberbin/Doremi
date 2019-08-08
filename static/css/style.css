@@ -4308,6 +4308,219 @@ body.popup-visible {
 }
 
 
+/* user-info */
+
+.user-info .upper {
+    position: relative;
+    padding: 120px 0 50px;
+}
+
+.user-info .section-title {
+    margin-top: 80px;
+    margin-bottom: 40px;
+}
+
+.cuser-info .upper .item {
+    position: relative;
+    margin-bottom: 64px;
+}
+
+
+.user-info .upper .item .icon {
+    position: relative;
+    height: 90px;
+    color: #fff;
+    width: 90px;
+    margin: 0 auto;
+    border-radius: 0 15px 0 15px;
+    text-align: center;
+    transition: .5s ease-in;
+    margin-bottom: 20px;
+}
+
+.user-info .upper .column:nth-child(1) .item .icon {
+    background: #adcb69;
+    border: 2px solid #adcb69;
+}
+
+.user-info .upper .column:nth-child(2) .item .icon {
+    background: #ec4f74;
+    border: 2px solid #ec4f74;
+}
+
+.user-info .upper .column:nth-child(3) .item .icon {
+    background: #5bc89f;
+    border: 2px solid #5bc89f;
+}
+
+.user-info .upper .column:nth-child(1) .item:hover .icon {
+    background: transparent;
+    color: #adcb69;
+    transition: .5s ease-in;
+}
+
+.user-info .upper .column:nth-child(2) .item:hover .icon {
+    background: transparent;
+    color: #ec4f74;
+    transition: .5s ease-in;
+}
+
+.user-info .upper .column:nth-child(3) .item:hover .icon {
+    background: transparent;
+    color: #5bc89f;
+    transition: .5s ease-in;
+}
+
+
+.user-info .upper .item .icon span:before {
+    position: relative;
+    line-height: 90px;
+    font-size: 30px;
+}
+
+
+.user-info .upper .item h4 {
+    margin-bottom: 16px;
+    font-size: 25px;
+}
+
+.user-info .upper .item h4 a {
+    position: relative;
+    transition: .5s ease;
+}
+
+.user-info .upper .column:nth-child(1) h4 a {
+    color: #adcb69;
+}
+
+.user-info .upper .column:nth-child(2) h4 a {
+    color: #ec4f74;
+}
+
+.user-info .upper .column:nth-child(3) h4 a {
+    color: #5bc89f;
+}
+
+
+.user-info .upper .item p {
+    position: relative;
+    color: #777;
+    font-size: 17px;
+    line-height: 26px;
+}
+
+
+.user-info .user-box {
+    position: relative;
+    margin-bottom: 100px;
+}
+
+.user-info .user-box .user-form {
+    margin-top: 6px;
+}
+
+.user-info .user-box .form-group {
+    position: relative;
+    margin-bottom: 25px;
+    overflow: hidden;
+}
+
+.user-info .user-box input[type="text"],
+.user-info .user-box input[type="phone"],
+.user-info .user-box input[type="password"],
+.user-info .user-box select {
+    position: relative;
+    width: 100%;
+    line-height: 24px;
+    font-size: 14px;
+    font-family: 'Open sans', sans-serif;
+    color: #777;
+    background: #fafafa;
+    border: 1px solid #ececec;
+    border-radius: 3px;
+    height: 60px;
+    padding: 24px 36px;
+    transition: all 500ms ease;
+    -moz-transition: all 500ms ease;
+    -webkit-transition: all 500ms ease;
+    -ms-transition: all 500ms ease;
+    -o-transition: all 500ms ease;
+}
+
+.user-info .contact-box textarea {
+    position: relative;
+    width: 100%;
+    line-height: 24px;
+    padding: 20px 36px;
+    height: 180px;
+    resize: none;
+    background: #fafafa;
+    border: 1px solid #ececec;
+    font-family: 'Open sans', sans-serif;
+    font-size: 14px;
+    color: #777;
+    border-radius: 3px;
+    padding-bottom: 0px;
+    margin-bottom: 0px;
+    transition: all 500ms ease;
+    -moz-transition: all 500ms ease;
+    -webkit-transition: all 500ms ease;
+    -ms-transition: all 500ms ease;
+    -o-transition: all 500ms ease;
+}
+
+
+.user-info .user-box input:focus,
+.user-info .user-box textarea:focus,
+.user-info .user-box select:focus {
+    border-color: #ff9a00;
+}
+
+.user-info .user-box input.error,
+.user-info .user-box textarea.error,
+.user-info .user-box select.error {
+    border-color: #ff9a00;
+}
+
+.user-info .user-box input.error:focus,
+.user-info .user-box textarea.error:focus {
+    border-color: #ff9a00;
+    box-shadow: 0px 0px 3px 0px #ff9a00;
+    -moz-box-shadow: 0px 0px 3px 0px #ff9a00;
+    -ms-box-shadow: 0px 0px 3px 0px #ff9a00;
+    -o-box-shadow: 0px 0px 3px 0px #ff9a00;
+    -webkit-box-shadow: 0px 0px 3px 0px #ff9a00;
+}
+
+.user-info .user-box label.error {
+    display: none !important;
+}
+
+.user-info .user-box select option {
+    padding: 5px 15px;
+}
+
+.user-info .user-box button {
+    background: #ff9a00;
+    color: #fff;
+    line-height: 45px;
+    padding: 0 41px;
+    font-family: 'bubblegum';
+    text-transform: capitalize;
+}
+
+.user-info .user-box button:hover {
+    background: transparent !important;
+    color: #ff9a00;
+    border-color: #ff9a00;
+    transition: .5s ease;
+}
+
+
+/***
+
+
+
 /*contact-area*/
 
 
@@ -4427,7 +4640,7 @@ body.popup-visible {
 }
 
 .contact-us .contact-box input[type="text"],
-.contact-us .contact-box input[type="email"],
+.contact-us .contact-box input[type="phone"],
 .contact-us .contact-box input[type="password"],
 .contact-us .contact-box select {
     position: relative;

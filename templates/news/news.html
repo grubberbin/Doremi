@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+
+{% block title %}新闻 - 哆唻咪启蒙乐园{% endblock %}
+
+{% block custom_content %}
+    <section class="page-title center">
+        <div class="container">
+            <h2>NEWS</h2>
+            <ul>
+                <li><a href="{% url 'index' %}">home</a></li>
+                <li><a href="{% url 'news:news' %}">news</a></li>
+            </ul>
+        </div>
+    </section>
+{% endblock %}
