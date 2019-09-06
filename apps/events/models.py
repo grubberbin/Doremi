@@ -14,6 +14,7 @@ class Events(models.Model):
     address = models.CharField(max_length=50, verbose_name='地点', null=False, blank=False)
     awards = models.CharField(max_length=50, verbose_name='奖项', null=False, blank=False)
     class_id = models.CharField(max_length=50, verbose_name='活动对象', null=False, blank=False)
+    image = models.ImageField(max_length=100, upload_to='image/%Y/%m', default='image?default.png', verbose_name='封面图')
 
     class Meta:
         verbose_name = '活动'
