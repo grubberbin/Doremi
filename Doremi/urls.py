@@ -16,36 +16,49 @@ Including another URLconf
 from django.urls import path
 from django.views.generic import TemplateView
 from django.conf.urls import include
+from django.conf.urls.static import static
+from django.conf import settings
 
 import xadmin
 from .view import IndexView
+from users.views import LogoutView, LoginView, RegisterView, ForgetPwdView
 
 urlpatterns = [
-    path('xadmin/', xadmin.site.urls),
-    # 验证码
-    path('captcha/', include('captcha.urls')),
+                  path('xadmin/', xadmin.site.urls),
 
-    # 主页
-    path('', IndexView.as_view(), name='index'),
-    path('index/', IndexView.as_view(), name='index'),
+                  # 验证码
+                  path('captcha/', include('captcha.urls')),
 
-    path('about/', TemplateView.as_view(template_name='about.html'), name='about'),
+                  # 主页
+                  path('', IndexView.as_view(), name='index'),
 
-    # 用户中心 URL 配置
-    path('users/', include('users.urls', namespace='users')),
+                  path('index/', IndexView.as_view(), name='index'),
 
-    # 商城
-    path('shop/', include('shop.urls', namespace='shop')),
+                  path('about/', TemplateView.as_view(template_name='about.html'), name='about'),
 
-    # 活动
-    path('events/', include('events.urls', namespace='events')),
+                  path('login/', LoginView.as_view(), name='login'),
 
-    # 新闻
-    path('news/', include('news.urls', namespace='news')),
+                  path('register/', RegisterView.as_view(), name='register'),
 
-    # 联系我们
-    path('contact/', include('contact.urls', namespace='contact')),
-]
+                  path('forgot/', ForgetPwdView.as_view(), name='forgot'),
+
+                  path('logout/', LogoutView.as_view(), name='logout'),
+
+                  # 用户中心 URL 配置
+                  path('user/', include('users.urls', namespace='users')),
+
+                  # 商城
+                  path('shop/', include('shop.urls', namespace='shop')),
+
+                  # 活动
+                  path('events/', include('events.urls', namespace='events')),
+
+                  # 新闻
+                  path('news/', include('news.urls', namespace='news')),
+
+                  # 联系我们
+                  path('contact/', include('contact.urls', namespace='contact')),
+              ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
 # 全局 404 页面配置（django 会自动调用这个变量）
 handler404 = 'users.views.page_not_found'
