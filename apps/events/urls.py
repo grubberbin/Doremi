@@ -1,11 +1,11 @@
 from django.urls import path
-
+from django.views.generic import TemplateView
 from .views import EventInfoView, EventDetailView
 
 app_name = 'events'
 
 urlpatterns = [
-    # 商城信息
+    # 活动信息
     path('', EventInfoView.as_view(), name='events'),
-    path('detial/', EventDetailView.as_view(), name='event_detial'),
+    path('<int:event_id>/', EventDetailView.as_view(), name='event_detial'),
 ]

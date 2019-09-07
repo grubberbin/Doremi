@@ -16,7 +16,7 @@ class GlobalSettings:
 
 
 class EventsManager(object):
-    list_display = ['id', 'title', 'create_time']
+    list_display = ['id', 'title', 'content', 'address', 'start_time']
     search_fields = ['title']
     list_filter = []
 

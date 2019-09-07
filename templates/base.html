@@ -19,7 +19,7 @@
         <div class="container">
             <div class="logo pull-left">
                 <a href="{% url 'index' %}">
-                    <img src="../static/images/logo/1.png" alt="Awesome Image">
+                    <img src="{% static 'images/logo/1.png' %}" alt="Awesome Image">
                 </a>
             </div>
 
@@ -67,17 +67,11 @@
 
                         <div class="navbar-collapse collapse text-center">
                             <ul>
-                                <li><a href="/index/">主页</a></li>
-{#                                <li><a href="/news/">新闻</a></li>#}
-                                <li class="dropdown">
-                                    <a href="/events/">活动</a>
-                                    <ul class="submenu">
-                                        <li><a href="/events/">活动</a></li>
-                                        <li><a href="/events-detrails/">活动详情</a></li>
-                                    </ul>
-                                </li>
-                                <li><a href="/about/">关于</a></li>
-{#                                <li><a href="/care-home/">育儿学堂</a></li>#}
+                                <li><a href="{% url 'index' %}">主页</a></li>
+                                <li><a href="{% url 'news:news' %}">新闻</a></li>
+                                <li><a href="{% url 'events:events' %}">活动</a></li>
+                                <li><a href="{% url 'about' %}">关于</a></li>
+                                {#                                <li><a href="/care-home/">育儿学堂</a></li>#}
                                 <li class="dropdown">
                                     <a href="/shop/">商城</a>
                                     <ul class="submenu">
@@ -160,7 +154,7 @@
         <div class="footer-bottom-bg">
             <div class="container">
                 <div class="pull-left">
-                    <figure><a href="#"><img src="../static/images/logo/2.png" alt=""></a></figure>
+                    <figure><a href="#"><img src="{% static '/images/logo/2.png' %}" alt=""></a></figure>
                 </div>
                 <div class="pull-right">
                     <div class="menu">
@@ -210,59 +204,25 @@
                         <div class="master-slider ms-skin-default" id="masterslider">
 
                             <div class="ms-slide">
-                                <img src="../static/css/masterslider/style/blank.gif"
-                                     data-src="../static/images/gallery/1.jpg"
+                                <img src="{% static 'css/masterslider/style/blank.gif' %}"
+                                     data-src="{% static 'images/gallery/1.jpg' %}"
                                      alt="">
-                                <img class="ms-thumb" src="../static/images/gallery/1.jpg" alt="thumb"/>
+                                <img class="ms-thumb" src="{% static '/images/gallery/1.jpg' %}" alt="thumb"/>
                             </div>
 
                             <div class="ms-slide">
-                                <img src="../static/css/masterslider/style/blank.gif"
-                                     data-src="../static/images/gallery/2.jpg"
+                                <img src="{% static 'css/masterslider/style/blank.gif' %}"
+                                     data-src="{% static 'images/gallery/2.jpg' %}"
                                      alt="">
-                                <img class="ms-thumb" src="../static/images/gallery/2.jpg" alt="thumb"/>
+                                <img class="ms-thumb" src="{% static '/images/gallery/2.jpg' %}" alt="thumb"/>
                             </div>
 
                             <div class="ms-slide">
-                                <img src="../static/css/masterslider/style/blank.gif"
-                                     data-src="../static/images/gallery/3.jpg"
+                                <img src="{% static 'css/masterslider/style/blank.gif' %}"
+                                     data-src="{% static 'images/gallery/3.jpg' %}"
                                      alt="">
-                                <img class="ms-thumb" src="../static/images/gallery/3.jpg" alt="thumb"/>
+                                <img class="ms-thumb" src="{% static '/images/gallery/3.jpg' %}" alt="thumb"/>
                             </div>
-
-                            <div class="ms-slide">
-                                <img src="../static/css/masterslider/style/blank.gif"
-                                     data-src="../static/images/gallery/4.jpg"
-                                     alt="">
-                                <img class="ms-thumb" src="../static/images/gallery/4.jpg" alt="thumb"/>
-                            </div>
-
-                            <div class="ms-slide">
-                                <img src="../static/css/masterslider/style/blank.gif"
-                                     data-src="../static/images/gallery/5.jpg"
-                                     alt="">
-                                <img class="ms-thumb" src="../static/images/gallery/5.jpg" alt="thumb"/>
-                            </div>
-
-                            <div class="ms-slide">
-                                <img src="../static/css/masterslider/style/blank.gif"
-                                     data-src="../static/images/gallery/6.jpg"
-                                     alt="">
-                                <img class="ms-thumb" src="../static/images/gallery/6.jpg" alt="thumb"/>
-                            </div>
-                            <div class="ms-slide">
-                                <img src="../static/css/masterslider/style/blank.gif"
-                                     data-src="../static/images/gallery/7.jpg"
-                                     alt="">
-                                <img class="ms-thumb" src="../static/images/gallery/7.jpg" alt="thumb"/>
-                            </div>
-                            <div class="ms-slide">
-                                <img src="../static/css/masterslider/style/blank.gif"
-                                     data-src="../static/images/gallery/8.jpg"
-                                     alt="">
-                                <img class="ms-thumb" src="../static/images/gallery/8.jpg" alt="thumb"/>
-                            </div>
-
 
                         </div>
                         <!-- end of masterslider -->

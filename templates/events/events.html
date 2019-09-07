@@ -1,191 +1,53 @@
 ﻿{% extends 'base.html' %}
 {% load staticfiles %}
 
-{% block title %}事件 - 哆唻咪启蒙乐园{% endblock %}
+{% block title %}活动 - 哆唻咪启蒙乐园{% endblock %}
 
 {% block custom_content %}
 
-<section class="page-title center">
-    <div class="container">
-        <h2>events</h2>
-        <ul>
-            <li><a href="../index.html">home</a></li>
-            <li><a href="evnet.html">evnets</a></li>
-        </ul>
-    </div>
-</section>
+    <section class="page-title center">
+        <div class="container">
+            <h2>events</h2>
+            <ul>
+                <li><a href="{% url 'index' %}">home</a></li>
+                <li><a href="{% url 'events:events' %}">Events</a></li>
+            </ul>
+        </div>
+    </section>
 
-<section class="event style-2">
-    <div class="container">
-
-        <div class="row">
-            <div class="col-md-4 col-sm-6 col-xsw-12 item wow fadeIn" data-wow-duration="2s" data-wow-delay="0.5s" data-wow-offset="0" style="visibility: visible; animation-duration: 2s; animation-delay: 0.5s; animation-name: fadeIn;">
-                <div class="img-holder">
-                    <figure><a href="#"><img src="../../static/images/resource/7.jpg" alt="Awesome Image"></a></figure>
-                    <div class="content bg-color-1">
-                        <div class="inner-box">
-                            <div class="btn-box">
-                                <div class="count">25</div>
-                                <div class="month">July</div>
+    <section class="event style-2">
+        <div class="container">
+            <div class="row">
+                {% for event in events %}
+                    <div class="col-md-4 col-sm-6 col-xsw-12 item wow fadeIn" data-wow-duration="2s"
+                         data-wow-delay="0.5s"
+                         data-wow-offset="0"
+                         style="visibility: visible; animation-duration: 2s; animation-delay: 0.5s; animation-name: fadeIn;">
+                        <div class="img-holder">
+                            <figure><a href="/events/{{ event.id }}/"><img src="{{ event.image }}"
+                                                                           alt="{{ event.title }}"></a>
+                            </figure>
+                            <div class="content bg-color-1">
+                                <div class="inner-box">
+                                    <div class="btn-box">
+                                        <div class="count">{{ event.day }}</div>
+                                        <div class="month">{{ event.month }}</div>
+                                    </div>
+                                    <h4><a href="/events/{{ event.id }}/">{{ event.title }}</a></h4>
+                                    <p><span class="fa fa-clock-o"></span> {{ event.time }}</p>
+                                    <p><span class="fa fa-map-marker"></span> {{ event.address }}</p>
+                                </div>
                             </div>
-                            <h4><a href="#">Dancing for a happy life</a></h4>
-                            <p><span class="fa fa-clock-o"></span> 8.00 am to 12.00 pm</p>
-                            <p><span class="fa fa-map-marker"></span> NashvilleKids Centre , Berlin Germany</p>
                         </div>
                     </div>
-                    
-                </div>
-
-            </div>
-            <div class="col-md-4 col-sm-6 col-xsw-12 item wow fadeIn" data-wow-duration="2s" data-wow-delay="0.6s" data-wow-offset="0" style="visibility: visible; animation-duration: 2s; animation-delay: 0.5s; animation-name: fadeIn;">
-                <div class="img-holder">
-                    <figure><a href="#"><img src="../../static/images/resource/8.jpg" alt="Awesome Image"></a></figure>
-                    <div class="content bg-color-2">
-                        <div class="inner-box">
-                            <div class="btn-box">
-                                <div class="count">25</div>
-                                <div class="month">July</div>
-                            </div>
-                            <h4><a href="#">Dancing for a happy life</a></h4>
-                            <p><span class="fa fa-clock-o"></span> 8.00 am to 12.00 pm</p>
-                            <p><span class="fa fa-map-marker"></span> NashvilleKids Centre , Berlin Germany</p>
-                        </div>
-                            
-                    </div>
-                    
-                </div>
-                
-            </div>
-            <div class="col-md-4 col-sm-6 col-xsw-12 item wow fadeIn" data-wow-duration="2s" data-wow-delay="0.7s" data-wow-offset="0" style="visibility: visible; animation-duration: 2s; animation-delay: 0.5s; animation-name: fadeIn;">
-                <div class="img-holder">
-                    <figure><a href="#"><img src="../../static/images/resource/9.jpg" alt="Awesome Image"></a></figure>
-                    <div class="content bg-color-3">
-                        <div class="inner-box">
-                            <div class="btn-box">
-                                <div class="count">25</div>
-                                <div class="month">July</div>
-                            </div>
-                            <h4><a href="#">Dancing for a happy life</a></h4>
-                            <p><span class="fa fa-clock-o"></span> 8.00 am to 12.00 pm</p>
-                            <p><span class="fa fa-map-marker"></span> NashvilleKids Centre , Berlin Germany</p>
-                        </div>
-                    </div>
-                    
-                </div>
-            </div>
-            <div class="col-md-4 col-sm-6 col-xsw-12 item wow fadeIn" data-wow-duration="2s" data-wow-delay="0.5s" data-wow-offset="0" style="visibility: visible; animation-duration: 2s; animation-delay: 0.5s; animation-name: fadeIn;">
-                <div class="img-holder">
-                    <figure><a href="#"><img src="../../static/images/resource/7.jpg" alt="Awesome Image"></a></figure>
-                    <div class="content bg-color-1">
-                        <div class="inner-box">
-                            <div class="btn-box">
-                                <div class="count">25</div>
-                                <div class="month">July</div>
-                            </div>
-                            <h4><a href="#">Dancing for a happy life</a></h4>
-                            <p><span class="fa fa-clock-o"></span> 8.00 am to 12.00 pm</p>
-                            <p><span class="fa fa-map-marker"></span> NashvilleKids Centre , Berlin Germany</p>
-                        </div>
-                    </div>
-                    
-                </div>
+                {% empty %}
+                    <div class="link-btn center"><a href="#" class="theme-btn btn-style-one">没有活动项目哦</a></div>
+                {% endfor %}
 
             </div>
-            <div class="col-md-4 col-sm-6 col-xsw-12 item wow fadeIn" data-wow-duration="2s" data-wow-delay="0.6s" data-wow-offset="0" style="visibility: visible; animation-duration: 2s; animation-delay: 0.5s; animation-name: fadeIn;">
-                <div class="img-holder">
-                    <figure><a href="#"><img src="../../static/images/resource/8.jpg" alt="Awesome Image"></a></figure>
-                    <div class="content bg-color-2">
-                        <div class="inner-box">
-                            <div class="btn-box">
-                                <div class="count">25</div>
-                                <div class="month">July</div>
-                            </div>
-                            <h4><a href="#">Dancing for a happy life</a></h4>
-                            <p><span class="fa fa-clock-o"></span> 8.00 am to 12.00 pm</p>
-                            <p><span class="fa fa-map-marker"></span> NashvilleKids Centre , Berlin Germany</p>
-                        </div>
-                            
-                    </div>
-                    
-                </div>
-                
-            </div>
-            <div class="col-md-4 col-sm-6 col-xsw-12 item wow fadeIn" data-wow-duration="2s" data-wow-delay="0.7s" data-wow-offset="0" style="visibility: visible; animation-duration: 2s; animation-delay: 0.5s; animation-name: fadeIn;">
-                <div class="img-holder">
-                    <figure><a href="#"><img src="../../static/images/resource/9.jpg" alt="Awesome Image"></a></figure>
-                    <div class="content bg-color-3">
-                        <div class="inner-box">
-                            <div class="btn-box">
-                                <div class="count">25</div>
-                                <div class="month">July</div>
-                            </div>
-                            <h4><a href="#">Dancing for a happy life</a></h4>
-                            <p><span class="fa fa-clock-o"></span> 8.00 am to 12.00 pm</p>
-                            <p><span class="fa fa-map-marker"></span> NashvilleKids Centre , Berlin Germany</p>
-                        </div>
-                    </div>
-                    
-                </div>
-            </div>
-            <div class="col-md-4 col-sm-6 col-xsw-12 item wow fadeIn" data-wow-duration="2s" data-wow-delay="0.5s" data-wow-offset="0" style="visibility: visible; animation-duration: 2s; animation-delay: 0.5s; animation-name: fadeIn;">
-                <div class="img-holder">
-                    <figure><a href="#"><img src="../../static/images/resource/7.jpg" alt="Awesome Image"></a></figure>
-                    <div class="content bg-color-1">
-                        <div class="inner-box">
-                            <div class="btn-box">
-                                <div class="count">25</div>
-                                <div class="month">July</div>
-                            </div>
-                            <h4><a href="#">Dancing for a happy life</a></h4>
-                            <p><span class="fa fa-clock-o"></span> 8.00 am to 12.00 pm</p>
-                            <p><span class="fa fa-map-marker"></span> NashvilleKids Centre , Berlin Germany</p>
-                        </div>
-                    </div>
-                    
-                </div>
-
-            </div>
-            <div class="col-md-4 col-sm-6 col-xsw-12 item wow fadeIn" data-wow-duration="2s" data-wow-delay="0.6s" data-wow-offset="0" style="visibility: visible; animation-duration: 2s; animation-delay: 0.5s; animation-name: fadeIn;">
-                <div class="img-holder">
-                    <figure><a href="#"><img src="../../static/images/resource/8.jpg" alt="Awesome Image"></a></figure>
-                    <div class="content bg-color-2">
-                        <div class="inner-box">
-                            <div class="btn-box">
-                                <div class="count">25</div>
-                                <div class="month">July</div>
-                            </div>
-                            <h4><a href="#">Dancing for a happy life</a></h4>
-                            <p><span class="fa fa-clock-o"></span> 8.00 am to 12.00 pm</p>
-                            <p><span class="fa fa-map-marker"></span> NashvilleKids Centre , Berlin Germany</p>
-                        </div>
-                            
-                    </div>
-                    
-                </div>
-                
-            </div>
-            <div class="col-md-4 col-sm-6 col-xsw-12 item wow fadeIn" data-wow-duration="2s" data-wow-delay="0.7s" data-wow-offset="0" style="visibility: visible; animation-duration: 2s; animation-delay: 0.5s; animation-name: fadeIn;">
-                <div class="img-holder">
-                    <figure><a href="#"><img src="../../static/images/resource/9.jpg" alt="Awesome Image"></a></figure>
-                    <div class="content bg-color-3">
-                        <div class="inner-box">
-                            <div class="btn-box">
-                                <div class="count">25</div>
-                                <div class="month">July</div>
-                            </div>
-                            <h4><a href="#">Dancing for a happy life</a></h4>
-                            <p><span class="fa fa-clock-o"></span> 8.00 am to 12.00 pm</p>
-                            <p><span class="fa fa-map-marker"></span> NashvilleKids Centre , Berlin Germany</p>
-                        </div>
-                    </div>
-                    
-                </div>
-            </div>
+            {#            <div class="link-btn center"><a href="#" class="theme-btn btn-style-one">load more</a></div>#}
 
         </div>
-        <div class="link-btn center"><a href="#" class="theme-btn btn-style-one">load more</a></div>
-
-    </div>
-</section>
+    </section>
 
 {% endblock %}
