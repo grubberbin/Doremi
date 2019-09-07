@@ -26,7 +26,6 @@ class EventInfoView(View):
                     'image': ev.image.url,
                 }
             )
-            print(event_list)
         else:
             msg = 'Not events!'
         return render(request, 'events/events.html', {'events': event_list, 'msg': msg})

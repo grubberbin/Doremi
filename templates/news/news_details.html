@@ -9,17 +9,18 @@
             <h2>NEWS</h2>
             <ul>
                 <li><a href="{% url 'index' %}">home</a></li>
-                <li><a href="#">news</a></li>
+                <li><a href="{% url 'news:news' %}">news</a></li>
+                <li><a href="#">news-details</a></li>
             </ul>
         </div>
     </section>
 
-    <section class="page-news center">
-        {% for news in news_list %}
-            <ul class="news content">
-                <li><a class="link news" href="/news/{{ news.id }}/"> {{ news.title }}</a>
-                    <span> {{ news.time }}</span></li>
-            </ul>
-        {% endfor %}
+    <section class="page-news-content center">
+        <h4>{{ news.title }}</h4>
+        <h7>{{ news.time }}</h7>
+        <p>
+            {{ news.content }}
+        </p>
+
     </section>
 {% endblock %}
