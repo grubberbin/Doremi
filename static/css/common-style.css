@@ -202,6 +202,12 @@ ul, li {
     text-align: center;
 }
 
+.page-news.center {
+    text-align: center;
+    margin-top: 50px;
+    margin-left: 0;
+}
+
 .left {
     text-align: left !important;
 }

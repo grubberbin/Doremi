@@ -1,5 +1,6 @@
 import xadmin
 from xadmin import views
+from .models import Goods, Order
 
 
 # ----- adminx 全局配置
@@ -16,5 +17,17 @@ class GlobalSettings:
 
 # ------
 
-xadmin.site.register(views.BaseAdminView, BaseSetting)
-xadmin.site.register(views.CommAdminView, GlobalSettings)
+class GoodsManager(object):
+    list_display = ['name', 'price', 'color', 'number']
+    search_fields = ['name']
+    list_filter = ['price', 'number']
+
+
+class OrdersManager(object):
+    list_display = ['id', 'g_id', 'u_id', 'type', 'count', 'pay_method']
+    search_fields = ['id', 'g_id', 'u_id']
+    list_filter = ['type', 'pay_method']
+
+
+xadmin.site.register(Goods, GoodsManager)
+xadmin.site.register(Order, OrdersManager)

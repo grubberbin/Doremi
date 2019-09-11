@@ -17,7 +17,7 @@
         <div class="container">
             <div class="section-title center">
                 <div class="drop-message">
-                    <h2>给我们 <span>留言</span></h2>
+                    <h2>给我们 <span>留言</span>吧</h2>
                 </div>
             </div>
         </div>
@@ -42,13 +42,24 @@
                                 <input type="text" id="phone" name="phone" value="" placeholder="联系方式*">
                             </div>
 
+
+                            <label class="control-label">留言类型</label>
+
+                            <div class="form-group col-lg-6 col-md-6 col-xs-12">
+                                <div class="layui-input-block">
+                                    <input type="radio" name="type" value="0" title="咨询" checked="">
+                                    <input type="radio" name="type" value="1" title="建议">
+                                    <input type="radio" name="type" value="2" title="投诉">
+                                </div>
+                            </div>
+
                             <div class="form-group col-lg-12 col-sm-12 col-xs-12">
                                 <textarea name="message" id="message" placeholder="在这里写下您要对我们说的话吧(500个字)。。。"></textarea>
                             </div>
 
                             <div class="form-group col-lg-12 center">
                                 <button type="submit" name="contact_submit" id='contact_submit'
-                                        class="btn-style-one center">提交
+                                        class="btn-style-one center">留言
                                 </button>
                             </div>
                         </div>

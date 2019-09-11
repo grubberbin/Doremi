@@ -4,91 +4,112 @@
 {% block title %}购物车 - 哆唻咪启蒙乐园{% endblock %}
 
 {% block custom_content %}
-<section class="page-title center">
-    <div class="container">
-        <h2>cart page</h2>
-        <ul>
-            <li><a href="../index.html">home</a></li>
-            <li><a href="cart-page.html">cart</a></li>
-        </ul>
-    </div>
-</section>
+    <section class="page-title center">
+        <div class="container">
+            <h2>购物车</h2>
+            <ul>
+                <li><a href="{% url 'index' %}">home</a></li>
+                {#                <li><a href="{% url 'shop:good_details' goods_list.id %}">Goods</a></li>#}
+                <li><a href="#">cart</a></li>
+            </ul>
+        </div>
+    </section>
 
-<!--Cart Section-->
-<section class="cart-section">
-    <div class="container">
-        
-        <!--Cart Outer-->
-        <div class="cart-outer">
-            <div class="table-outer">
-                <table class="cart-table">
-                    <thead class="cart-header">
-                        <tr>
-                            <th class="prod-column">Product</th>
-                            <th>&nbsp;</th>
-                            <th class="price">Price</th>
-                            <th>Quantity</th>
-                            <th>Total</th>
-                            <th class="remove"><a href="#" class="remove-btn"><span class="fa fa-trash-o"></span></a></th>
-                        </tr>
-                    </thead>
-                    
-                    <tbody>
-                        <tr>
-                            <td colspan="2" class="prod-column">
-                                <div class="column-box">
-                                    <figure class="prod-thumb"><a href="#"><img src="../static/images/product/13.jpg" alt=""></a></figure>
-                                    <h3 class="prod-title padd-top-20">Stuffed soft sitting</h3>
-                                </div>
-                            </td>
-                            <td class="price">$ 155</td>
-                            <td class="qty"><input class="quantity-spinner" type="text" value="1" name="quantity"></td>
-                            <td class="sub-total">$ 155</td>
-                            <td class="remove"><a href="#" class="remove-btn"><span class="fa fa-times"></span></a></td>
-                        </tr>
-                        
-                    </tbody>
-                </table>
-            </div>
-            
-            <div class="update-cart-box clearfix">
-                <div class="pull-left">
-                    <div class="apply-coupon clearfix">
-                        <div class="form-group clearfix">
-                            <input type="text" name="coupon-code" value="" placeholder="Your coupon code">
-                        </div>
-                        <div class="form-group clearfix">
-                            <button type="button" class="thm-btn thm-blue-bg btn-style-one">Apply</button>
+    <!--Cart Section-->
+    <section class="cart-section">
+        <div class="container">
+
+            <!--Cart Outer-->
+            <div class="cart-outer">
+                {% if  goods_list %}
+                    <div class="table-outer">
+                        <table class="cart-table">
+                            <thead class="cart-header">
+                            <tr>
+                                <th class="prod-column">商品名称</th>
+                                <th>&nbsp;</th>
+                                <th class="price">单价</th>
+                                <th>数量</th>
+                                <th>总计</th>
+                                <th class="remove"><a href="#" class="remove-btn"><span
+                                        class="fa fa-trash-o"></span></a>
+                                </th>
+                            </tr>
+                            </thead>
+
+                            <tbody>
+                            {% for goods in goods_list %}
+                                <tr>
+                                    <td colspan="2" class="prod-column">
+                                        <div class="column-box">
+                                            <figure class="prod-thumb"><a
+                                                    href="{% url 'shop:good_details' goods_id=goods.id %}">
+                                                <img src="{{ goods.pic.url }}" width="120" height="100"
+                                                     alt="{{ goods.name }}"></a>
+                                            </figure>
+                                            <h3 class="prod-title padd-top-20">{{ goods.name }}</h3>
+                                        </div>
+                                    </td>
+                                    <td class="price" id="goods_price">{{ goods.price }}</td>
+                                    <td class="qty">
+                                        <input class="quantity-spinner" id="quantity" type="text"
+                                               value="{{ goods.quantity }}"
+                                               name="quantity"></td>
+                                    <td class="sub-total" id="goods_total">{{ goods.total }}</td>
+                                    <td class="remove"><a href="#" class="remove-btn"><span class="fa fa-times"></span></a>
+                                    </td>
+                                </tr>
+                            {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                {% else %}
+                    <div class="button center">
+                        <button type="button" class="thm-btn update-cart btn-style-one">Update Cart</button> &nbsp;
+                    </div>
+                {% endif %}
+
+                <div class="update-cart-box clearfix">
+                    <div class="pull-left">
+                        <div class="apply-coupon clearfix">
+                            <div class="form-group clearfix">
+                                <input type="text" name="coupon-code" value="" placeholder="留言">
+                            </div>
                         </div>
                     </div>
-                </div>
-                
-                <div class="pull-right">
-                    <button type="button" class="thm-btn update-cart btn-style-one">Update Cart</button> &nbsp;
-                </div>
-                
-            </div>
-            
-            
-            <div class="row clearfix">
 
-                
-                <div class="column cart-total col-md-6 col-sm-12 col-xs-12 col-md-offset-6">
-                    <h3>Cart Totals</h3>
-                    <!--Totals Table-->
-                    <ul class="totals-table">
-                        <li class="clearfix"><span class="col col-title">Sub Total</span><span class="col">$15.00</span></li>
-                        <li class="clearfix total"><span class="col col-title">Order Total</span><span class="col">$15.00</span></li>
-                    </ul>
-                    
-                    <div class="margin-top-30"><a href="checkout-page.html" class="thm-btn thm-blue-bg btn-style-one">Proceed to Checkout <span class="fa fa-long-arrow-right"></span></a></div>
+                    <div class="pull-right">
+                        <button type="button" class="thm-btn update-cart btn-style-one">更新购物车</button> &nbsp;
+                    </div>
+
                 </div>
-                
+
+
+                <div class="row clearfix">
+
+
+                    <div class="column cart-total col-md-6 col-sm-12 col-xs-12 col-md-offset-6">
+                        <h3>购物车结算</h3>
+                        <!--Totals Table-->
+                        <ul class="totals-table">
+                            <li class="clearfix"><span class="col col-title">预付金额</span>
+                                <span class="col" id="pre_price">{{ goods.pric }}</span>
+                            </li>
+                            <li class="clearfix total"><span class="col col-title">实付金额</span>
+                                <span class="col" id="total_price">{{ goods.price }}</span>
+                            </li>
+                        </ul>
+
+                        <div class="margin-top-30"><a href="{% url 'shop:order' %}"
+                                                      class="thm-btn thm-blue-bg btn-style-one">订单提交
+                            <span class="fa fa-long-arrow-right"></span></a></div>
+                    </div>
+
+                </div>
+
+
             </div>
-            
-            
+
         </div>
-        
-    </div>
-</section>
+    </section>
 {% endblock %}

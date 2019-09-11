@@ -4320,6 +4320,11 @@ body.popup-visible {
     margin-bottom: 40px;
 }
 
+.user-info-label {
+    position: relative;
+    margin-bottom: 0px;
+}
+
 .cuser-info .upper .item {
     position: relative;
     margin-bottom: 64px;
