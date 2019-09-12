@@ -27,7 +27,7 @@
                 {#                <div class="form-group" style="visibility:visible;">#}
                 {#                    <div class="alert alert-success" role="alert">手机验证码已发送</div>#}
                 {#                </div>#}
-
+                {% csrf_token %}
                 <div class="form-group {% if register_form.errors.username %} errorput {% endif %}">
                     <label for="name" class="sr-only">用户名</label>
                     <input type="text" class="form-control" id="name" name="username" placeholder="用户名"

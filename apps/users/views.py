@@ -42,7 +42,7 @@ class LoginView(View):
             if user is not None:
                 login(request, user)
                 print(request.user.username)
-                return HttpResponsePermanentRedirect(reverse('index'))
+                return HttpResponsePermanentRedirect(reverse('main:index'))
             return render(request, 'users/login.html', {'msg': '用户名或者密码错误！'})
         else:
             print('login data error')
@@ -68,12 +68,12 @@ class RegisterView(View):
             if pass_word != re_pass_word:
                 return render(request, 'users/register.html', {'register_form': register_form, 'msg': '两次输入密码不一致'})
 
-            user_profile = UserProfile()
-            user_profile.username = user_name
-            user_profile.email = user_name
-            user_profile.is_active = True
-            user_profile.password = make_password(pass_word)
-            user_profile.save()
+            user = UserProfile()
+            user.username = user_name
+            user.nick_name = user_name
+            user.is_active = True
+            user.password = make_password(pass_word)
+            user.save()
             return render(request, 'index.html')
         else:
             return render(request, 'users/register.html', {'register_form': register_form})
@@ -117,8 +117,7 @@ class UserInfoView(LoginRequiredMixin, View):
 class LogoutView(View):
     def get(self, request):
         logout(request)
-        print('logout', request)
-        return HttpResponsePermanentRedirect(reverse('index'))
+        return HttpResponsePermanentRedirect(reverse('main:index'))
 
 
 # 全局 404 处理函数

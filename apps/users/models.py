@@ -5,7 +5,7 @@ from django.contrib.auth.models import AbstractUser
 # Create your models here.
 
 
-class UserProfile(models.Model):
+class UserProfile(AbstractUser):
     nick_name = models.CharField(max_length=50, verbose_name='昵称', default='')
     birthday = models.DateField(null=True, blank=True, verbose_name='生日')
     gender = models.CharField(max_length=6, choices=(('male', '男'), ('female', '女')), default='female',

@@ -58,7 +58,7 @@ INSTALLED_APPS = [
 ]
 
 # UserProfile 覆盖了 Django 内置的 user 表
-# AUTH_USER_MODEL = 'users.UserProfile'
+AUTH_USER_MODEL = 'users.UserProfile'
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
