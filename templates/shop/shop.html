@@ -15,31 +15,38 @@
         </div>
     </section>
 
+
     <section class="shop">
-        <div class="container">
-            {#            {% if goods.len < 3 %}#}
-            <div class="team-list row">
-                {% for goods in goods_list %}
-                    <div class="col-md-3 col-sm-6 col-xs-12">
-                        <div class="item wow fadeIn" data-wow-duration="2s" data-wow-delay="0.5s" data-wow-offset="0"
-                             style="visibility: visible; animation-duration: 1s; animation-delay: 0.5s; animation-name: fadeIn;">
-                            <figure class="img-holder">
-                                <a href="/shop/goods/{{ goods.id }}"><img src="{{ goods.image_url }}" alt="{{ goods.name }}"></a>
-                            </figure>
-                            <div class="content">
-                                <h2><a href="#">{{ goods.name }}</a></h2>
-                                <p>{{ goods.price }} 元</p>
-                                <div class="cart">
-                                    <a href="cart-page.html"><span class="flaticon-shop"></span></a>
+        {% if goods_list %}
+            <div class="container">
+                {#            {% if goods.len < 3 %}#}
+                <div class="team-list row">
+                    {% for goods in goods_list %}
+                        <div class="col-md-3 col-sm-6 col-xs-12">
+                            <div class="item wow fadeIn" data-wow-duration="2s" data-wow-delay="0.5s"
+                                 data-wow-offset="0"
+                                 style="visibility: visible; animation-duration: 1s; animation-delay: 0.5s; animation-name: fadeIn;">
+                                <figure class="img-holder">
+                                    <a href="/shop/goods/{{ goods.id }}"><img src="{{ goods.image_url }}"
+                                                                              alt="{{ goods.name }}"></a>
+                                </figure>
+                                <div class="content">
+                                    <h2><a href="#">{{ goods.name }}</a></h2>
+                                    <p>{{ goods.price }} 元</p>
+                                    <div class="cart">
+                                        <a href="cart-page.html"><span class="flaticon-shop"></span></a>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                {% endfor %}
+                    {% endfor %}
+                </div>
+                {#            {% endif %}#}
             </div>
-            {#            {% endif %}#}
-        </div>
-
-
+        {% else %}
+            <div class="link-btn center"><a href="{% url 'main:index' %} " class="theme-btn btn-style-one">商城空空如也</a>
+            </div>
+        {% endif %}
     </section>
+
 {% endblock %}
