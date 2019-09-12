@@ -45,14 +45,28 @@
 
                             <label class="control-label">留言类型</label>
 
-                            <div class="form-group col-lg-6 col-md-6 col-xs-12">
-                                <div class="layui-input-block">
-                                    <input type="radio" name="type" value="0" title="咨询" checked="">
-                                    <input type="radio" name="type" value="1" title="建议">
-                                    <input type="radio" name="type" value="2" title="投诉">
-                                </div>
+                            <div class="type-options">
+                                <ul>
+                                    <li>
+                                        <div class="radio-option">
+                                            <input type="radio" name="msg-type-group" id="msg-type-1">
+                                            <label for="msg-type-1">咨询</label>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="radio-option">
+                                            <input type="radio" name="msg-type-group" id="msg-type-2">
+                                            <label for="msg-type-2">建议</label>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="radio-option">
+                                            <input type="radio" name="msg-type-group" id="msg-type-3">
+                                            <label for="msg-type-3">投诉</label>
+                                        </div>
+                                    </li>
+                                </ul>
                             </div>
-
                             <div class="form-group col-lg-12 col-sm-12 col-xs-12">
                                 <textarea name="message" id="message" placeholder="在这里写下您要对我们说的话吧(500个字)。。。"></textarea>
                             </div>
