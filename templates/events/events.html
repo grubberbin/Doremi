@@ -41,7 +41,8 @@
                         </div>
                     </div>
                 {% empty %}
-                    <div class="link-btn center"><a href="#" class="theme-btn btn-style-one">没有活动项目哦</a></div>
+                    <div class="link-btn center"><a href="{% url 'main:index' %}" class="theme-btn btn-style-one">没有活动项目哦</a>
+                    </div>
                 {% endfor %}
 
             </div>

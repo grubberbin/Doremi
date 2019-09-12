@@ -20,6 +20,9 @@
                 <li><a class="link news" href="/news/{{ news.id }}/"> {{ news.title }}</a>
                     <span> {{ news.time }}</span></li>
             </ul>
+        {% empty %}
+            <div class="link-btn center"><a href="{% url 'main:index' %} " class="theme-btn btn-style-one">没有新闻哦</a>
+            </div>
         {% endfor %}
     </section>
 {% endblock %}
