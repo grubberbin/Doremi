@@ -20,7 +20,6 @@ from django.conf.urls.static import static
 from django.conf import settings
 
 import xadmin
-from .view import IndexView
 from users.views import LogoutView, LoginView, RegisterView, ForgetPwdView
 
 urlpatterns = [
@@ -30,9 +29,7 @@ urlpatterns = [
                   path('captcha/', include('captcha.urls')),
 
                   # 主页
-                  path('', IndexView.as_view(), name='index'),
-
-                  path('index/', IndexView.as_view(), name='index'),
+                  path('', include('main.urls', namespace='main')),
 
                   path('about/', TemplateView.as_view(template_name='about.html'), name='about'),
 
@@ -58,6 +55,7 @@ urlpatterns = [
 
                   # 联系我们
                   path('contact/', include('contact.urls', namespace='contact')),
+
               ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
 # 全局 404 页面配置（django 会自动调用这个变量）

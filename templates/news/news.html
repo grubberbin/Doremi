@@ -14,9 +14,9 @@
         </div>
     </section>
 
-    <section class="page-news center">
+    <section class="news">
         {% for news in news_list %}
-            <ul class="news content">
+            <ul class="list">
                 <li><a class="link news" href="/news/{{ news.id }}/"> {{ news.title }}</a>
                     <span> {{ news.time }}</span></li>
             </ul>

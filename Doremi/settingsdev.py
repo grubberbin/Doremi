@@ -23,16 +23,19 @@ STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'static'),
 ]
 
-INSTALLED_APPS.append('debug_toolbar')
-MIDDLEWARE.append('debug_toolbar.middleware.DebugToolbarMiddleware')
+#INSTALLED_APPS.append('debug_toolbar')
+#MIDDLEWARE.append('debug_toolbar.middleware.DebugToolbarMiddleware')
 
 # 请按照你开发时本机的数据库名字，密码，端口填写
 DATABASES = {
     'default': {
+        # 'ENGINE': 'django.db.backends.sqlite3',
+        # 'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'Doremi',
         'USER': 'root',
-        'PASSWORD': '12345678',
-        'HOST': '127.0.0.1',
+        'PASSWORD': '123456',
+        'HOST': '47.101.153.106',
+        'PORT': '3306',
     }
 }

@@ -7,7 +7,7 @@
 
 import xadmin
 from xadmin import views
-from .models import Teacher, ClassInfo, Child
+from .models import Teacher, ClassInfo, Child, UserProfile
 
 
 # ----- adminx 全局配置
@@ -23,6 +23,10 @@ class GlobalSettings:
 
 
 # ------
+class UsersManager(object):
+    list_display = ['nick_name', 'birthday', 'gender', 'mobile']
+    search_fields = ['mobile', 'email']
+    list_filter = ['gender']
 
 
 class TeachersManager(object):
@@ -49,7 +53,7 @@ from django.contrib.auth import get_user_model
 User = get_user_model()
  就可以代替下面那段代码
 '''
-
+#xadmin.site.register(UserProfile, UsersManager)
 xadmin.site.register(Teacher, TeachersManager)
 xadmin.site.register(ClassInfo, ClassesManager)
 xadmin.site.register(Child, ChildrenManager)
