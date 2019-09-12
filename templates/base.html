@@ -18,7 +18,7 @@
     <div class="main-header stricky bubble">
         <div class="container">
             <div class="logo pull-left">
-                <a href="{% url 'index' %}">
+                <a href="{% url 'main:index' %}">
                     <img src="{% static 'images/logo/1.png' %}" alt="Awesome Image">
                 </a>
             </div>
@@ -67,20 +67,13 @@
 
                         <div class="navbar-collapse collapse text-center">
                             <ul>
-                                <li><a href="{% url 'index' %}">主页</a></li>
+                                <li><a href="{% url 'main:index' %}">主页</a></li>
                                 <li><a href="{% url 'news:news' %}">新闻</a></li>
                                 <li><a href="{% url 'events:events' %}">活动</a></li>
                                 <li><a href="{% url 'about' %}">关于</a></li>
                                 {#                                <li><a href="/care-home/">育儿学堂</a></li>#}
-                                <li class="dropdown">
-                                    <a href="/shop/">商城</a>
-                                    <ul class="submenu">
-                                        <li><a href="/shop/details/">商品详情</a></li>
-                                        <li><a href="/cart-page/">购物车</a></li>
-                                        <li><a href="/checkout-page/">订单页</a></li>
-                                    </ul>
-                                </li>
-                                <li><a href="/contact/">联系我们</a></li>
+                                <li><a href="{% url 'shop:shop' %}">商城</a></li>
+                                <li><a href="{% url 'contact:contact' %}">联系我们</a></li>
                             </ul>
                         </div>
                     </div>
@@ -99,17 +92,6 @@
     <div class="footer-upper">
         <div class="container">
             <div class="row">
-                <div class="col-md-3 col-sm-6 col-xs-12 column">
-                    <div class="item center">
-                        <div class="icon">
-                            <span class="icon-location"></span>
-                        </div>
-                        <div class="content">
-                            <h4><a href="#">公众号</a></h4>
-                            <p>请关注微信公众号 <br>了解更多信息</p>
-                        </div>
-                    </div>
-                </div>
 
                 <div class="col-md-3 col-sm-6 col-xs-12 column">
                     <div class="item center">
@@ -122,10 +104,11 @@
                         </div>
                     </div>
                 </div>
+
                 <div class="col-md-3 col-sm-6 col-xs-12 column">
                     <div class="item center">
                         <div class="icon">
-                            <span class="icon-technology-2"></span>
+                            <span class="icon-technology"></span>
                         </div>
                         <div class="content">
                             <h4><a href="#">联系电话</a></h4>
@@ -134,6 +117,7 @@
                         </div>
                     </div>
                 </div>
+
                 <div class="col-md-3 col-sm-6 col-xs-12 column">
                     <div class="item center">
                         <div class="icon">
@@ -143,6 +127,18 @@
                             <h4><a href="#">邮件地址</a></h4>
                             <p>Doremi@Support.com </p>
                             <p>Doremi@info.com</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-3 col-sm-6 col-xs-12 column">
+                    <div class="item center">
+                        <div class="icon">
+                            <img src="{% static '/images/background/code.jpg' %}" width="98" height="98">
+                        </div>
+                        <div class="content">
+                            <h4><a href="#">公众号</a></h4>
+                            <p>请关注微信公众号 <br>了解更多信息</p>
                         </div>
                     </div>
                 </div>
@@ -159,13 +155,13 @@
                 <div class="pull-right">
                     <div class="menu">
                         <ul class="clearfix">
-                            <li><a href="/index/">home</a></li>
-                            <li><a href="/news/">news</a></li>
-                            <li><a href="/events/">events</a></li>
-                            <li><a href="/about/">about</a></li>
-                            <li><a href="/care-home/">care-home</a></li>
-                            <li><a href="/shop/">shop</a></li>
-                            <li><a href="/contact/">contact</a></li>
+                            <li><a href="{% url "main:index" %}">home</a></li>
+                            <li><a href="{% url "news:news" %}">news</a></li>
+                            <li><a href="{% url "events:events" %}">events</a></li>
+                            <li><a href="{% url "about" %}">about</a></li>
+                            {#                            <li><a href="/care-home/">care-home</a></li>#}
+                            <li><a href="{% url "shop:shop" %}">shop</a></li>
+                            <li><a href="{% url "contact:contact" %}">contact</a></li>
                         </ul>
                     </div>
                     <div class="copy-right">

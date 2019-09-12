@@ -54,6 +54,7 @@ INSTALLED_APPS = [
     'xadmin',
     'crispy_forms',
     'captcha',
+    'main'
 ]
 
 # UserProfile 覆盖了 Django 内置的 user 表
