@@ -24,3 +24,12 @@ class IndexView(View):
                                               'feedbacks': feedbacks,
                                               'teachers': teachers,
                                               'goods_list': goods_list})
+
+
+class AboutView(View):
+
+    def get(self, request):
+        feedbacks = Feedback.objects.all()
+        return render(request, 'about.html', {
+            'feedbacks': feedbacks,
+        })

@@ -31,8 +31,6 @@ urlpatterns = [
                   # 主页
                   path('', include('main.urls', namespace='main')),
 
-                  path('about/', TemplateView.as_view(template_name='about.html'), name='about'),
-
                   path('login/', LoginView.as_view(), name='login'),
 
                   path('register/', RegisterView.as_view(), name='register'),

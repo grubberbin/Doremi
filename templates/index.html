@@ -212,7 +212,7 @@
                                 <li>成熟的健康安全保卫工作</li>
                             </ul>
                             <div class="link">
-                                <a href="{% url 'about' %}" class="read-more">了解更多</a>
+                                <a href="{% url 'main:about' %}" class="read-more">了解更多</a>
                                 <a href="#" class="read-more">加入我们</a>
                             </div>
                         </div>
@@ -224,7 +224,7 @@
                     <div class="wow fadeInRight" data-wow-duration="2s" data-wow-delay="0.5s" data-wow-offset="0"
                          style="visibility: visible; animation-duration: 2s; animation-delay: 0.5s; animation-name: fadeIn;">
                         <figure class="img-box">
-                            <a href="#"><img src="../static/images/resource/1.png" alt=""></a>
+                            <a href="#"><img src="{% static 'images/resource/1.png' %}" alt=""></a>
                         </figure>
                     </div>
                 </div>
@@ -283,7 +283,7 @@
                     <div class="wow fadeIn" data-wow-duration="2s" data-wow-delay="0.5s" data-wow-offset="0"
                          style="visibility: visible; animation-duration: 2s; animation-delay: 0.5s; animation-name: fadeIn;">
                         <figure class="img-box">
-                            <a href="#"><img src="../static/images/resource/2.png" alt=""></a>
+                            <a href="#"><img src="{% static 'images/resource/2.png' %}" alt=""></a>
                         </figure>
                     </div>
 
@@ -314,7 +314,7 @@
             <div class="container">
                 <div class="text-left">
                     <div class="link pull-right">
-                        <a href="{% url 'about' %}" class="theme-btn btn-style-one">查看更多详情信息</a>
+                        <a href="{% url 'main:about' %}" class="theme-btn btn-style-one">查看更多详情信息</a>
                     </div>
                 </div>
             </div>
@@ -640,7 +640,7 @@
             <div class="container">
                 <div class="clearfix">
                     <div class="link pull-right">
-                        <a href="{% url "about" %} " class="theme-btn btn-style-one">查看更多照片</a>
+                        <a href="{% url "main:about" %} " class="theme-btn btn-style-one">查看更多照片</a>
                     </div>
                 </div>
             </div>

@@ -6,7 +6,7 @@
 # @Software : PyCharm
 
 from django.urls import path
-from .views import IndexView
+from .views import IndexView, AboutView
 
 app_name = 'main'
 
@@ -14,4 +14,5 @@ urlpatterns = [
     # 新闻信息
     path('', IndexView.as_view(), name='index'),
     path('index/', IndexView.as_view(), name='index'),
+    path('about/', AboutView.as_view(), name='about')
 ]

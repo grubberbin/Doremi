@@ -14,7 +14,7 @@
         </div>
     </section>
 
-    <section class="about">
+   <section class="about">
         <div class="container">
 
             <div class="row">
@@ -26,19 +26,16 @@
                                 <h2>Welcome TO <span>Doremi</span></h2>
                             </div>
                             <div class="text">
-                                <p>We're a childcare centre with an engaging curriculum backed by qualified, experienced
-                                    and
-                                    passionate teachers! By learning about those of differing social, cultural and
-                                    perspectives, young people </p>
+                                <p>我们是一家0-3岁的幼儿培育教育中心，有一群热情、活泼、自然、开朗、能歌善舞，喜欢小朋友的团队们。</p>
                             </div>
                             <ul class="list">
-                                <li>Educational field trips and school presentations</li>
-                                <li>Comprehensive reporting on individual achievement</li>
-                                <li>Individual attention in a small-class setting</li>
+                                <li>教育局批准的标准化幼儿教学基地</li>
+                                <li>丰富的教学资源，优质的教育理念</li>
+                                <li>成熟的健康安全保卫工作</li>
                             </ul>
                             <div class="link">
-                                <a href="#" class="read-more">Get Involved</a>
-                                <a href="#" class="read-more">Join Now</a>
+                                <a href="{% url 'main:about' %}" class="read-more">了解更多</a>
+                                <a href="#" class="read-more">加入我们</a>
                             </div>
                         </div>
                     </div>
@@ -67,10 +64,8 @@
                         <div class="item center">
                             <div class="icon"><span class="icon-school"></span></div>
                             <div class="content">
-                                <h4><a href="#">Active Learning</a></h4>
-                                <p>Your child is growing up fast and ready for a little more independence, our pre
-                                    school
-                                    club will be a perfect introduction.</p>
+                                <h4><a href="#">互动教学</a></h4>
+                                <p>亲子课堂使我们的必备课程</p>
                                 <a href="#" class="readmore">Read more</a>
                             </div>
                         </div>
@@ -82,10 +77,8 @@
                         <div class="item center">
                             <div class="icon"><span class="icon-paint-1"></span></div>
                             <div class="content">
-                                <h4><a href="#">Pre-School</a></h4>
-                                <p>Your child is growing up fast and ready for a little more independence, our pre
-                                    school
-                                    club will be a perfect introduction.</p>
+                                <h4><a href="#">学前教育</a></h4>
+                                <p>教育做到最好的幼小衔接</p>
                                 <a href="#" class="readmore">Read more</a>
                             </div>
                         </div>
@@ -97,10 +90,8 @@
                         <div class="item center">
                             <div class="icon"><span class="icon-blocks"></span></div>
                             <div class="content">
-                                <h4><a href="#">Language Lessons</a></h4>
-                                <p>Your child is growing up fast and ready for a little more independence, our pre
-                                    school
-                                    club will be a perfect introduction.</p>
+                                <h4><a href="#">双语课程</a></h4>
+                                <p>众多优秀的外教老师，更专业的外语教学</p>
                                 <a href="#" class="readmore">Read more</a>
                             </div>
                         </div>
@@ -114,7 +105,7 @@
                 <div class="text-center">
                     <h2>See Our Kindergarten Special Features!</h2>
                     <div class="link">
-                        <a href="#" class="theme-btn btn-style-one">Get Involved</a>
+                        <a href="#" class="theme-btn btn-style-one">加入我们</a>
                     </div>
                 </div>
             </div>
@@ -124,54 +115,50 @@
     <section class="feature style-2">
         <div class="container">
             <div class="section-title center pb-60">
-                <h2>Our<span>Feature</span></h2>
+                <h2>我们的<span>优势</span></h2>
             </div>
             <div class="row">
 
                 <div class="column col-md-4 col-sm-12">
                     <div class="item left1">
                         <div class="icon"><span class="icon-food"></span></div>
-                        <h4><a href="#">Meals Provided</a></h4>
-                        <p>Lorem ipsum dolor sit amet cotetur adipisicing elit mod tempor incididuntut labore</p>
+                        <h4><a href="#">午餐供应</a></h4>
+                        <p>我们有着高品质的实物供应，完全符合教育局标准</p>
                     </div>
                     <div class="item left1">
                         <div class="icon"><span class="icon-blocks"></span></div>
-                        <h4><a href="#">Language Lessons</a></h4>
-                        <p>Lorem ipsum dolor sit amet cotetur adipisicing elit mod tempor incididuntut labore</p>
+                        <h4><a href="#">双语课程</a></h4>
+                        <p>我们有着众多优秀外教老师</p>
                     </div>
                     <div class="item left1">
                         <div class="icon"><span class="icon-school"></span></div>
-                        <h4><a href="#">Transportation</a></h4>
-                        <p>Lorem ipsum dolor sit amet cotetur adipisicing elit mod tempor incididuntut labore</p>
+                        <h4><a href="#">接送上下学</a></h4>
+                        <p>我们有着标准化的校车来护送小朋友有安全上下学</p>
                     </div>
-
                 </div>
-
                 <div class="column col-md-4 col-sm-12">
                     <div class="wow fadeIn" data-wow-duration="2s" data-wow-delay="0.5s" data-wow-offset="0"
                          style="visibility: visible; animation-duration: 2s; animation-delay: 0.5s; animation-name: fadeIn;">
                         <figure class="img-box">
-                            <a href="#"><img src="../static/images/resource/13.png" alt=""></a>
+                            <a href="#"><img src="{% static 'images/resource/13.png' %}" alt=""></a>
                         </figure>
                     </div>
-
                 </div>
-
                 <div class="column col-md-4 col-sm-12">
                     <div class="item left2">
                         <div class="icon"><span class="icon-library"></span></div>
-                        <h4><a href="#">Full Day Session</a></h4>
-                        <p>Lorem ipsum dolor sit amet cotetur adipisicing elit mod tempor incididuntut labore</p>
+                        <h4><a href="#">全天课程安排</a></h4>
+                        <p>让孩子们能学习到好多新知识</p>
                     </div>
                     <div class="item left2">
                         <div class="icon"><span class="icon-paint-1"></span></div>
-                        <h4><a href="#">Special Education</a></h4>
-                        <p>Lorem ipsum dolor sit amet cotetur adipisicing elit mod tempor incididuntut labore</p>
+                        <h4><a href="#">充分的教学资源</a></h4>
+                        <p>我们有着丰富的多媒体教学资源</p>
                     </div>
                     <div class="item left2">
                         <div class="icon"><span class="icon-gestures"></span></div>
-                        <h4><a href="#">Qualified Teachers</a></h4>
-                        <p>Lorem ipsum dolor sit amet cotetur adipisicing elit mod tempor incididuntut labore</p>
+                        <h4><a href="#">顶尖的教师团队</a></h4>
+                        <p>我们有着顶尖的教师团队，他们有着丰富的幼儿教育资源</p>
                     </div>
 
                 </div>
@@ -179,26 +166,25 @@
             </div>
         </div>
     </section>
-
     <section class="sponser-section pdt-40 style-3">
         <div class="container">
             <div class="section-title center">
-                <h2>Our <span>Partner</span></h2>
-                <p>It’s an Amazine event for All over the World Design Community</p>
+                <h2>我们的 <span>合作伙伴</span></h2>
+                <p>以下都是专业的教育教学机构</p>
             </div>
             <ul class="sponsors-slider">
-                <li><a href="#"><img src="../static/images/sponsors/1.png" alt=""></a></li>
-                <li><a href="#"><img src="../static/images/sponsors/2.png" alt=""></a></li>
-                <li><a href="#"><img src="../static/images/sponsors/3.png" alt=""></a></li>
-                <li><a href="#"><img src="../static/images/sponsors/4.png" alt=""></a></li>
-                <li><a href="#"><img src="../static/images/sponsors/5.png" alt=""></a></li>
-                <li><a href="#"><img src="../static/images/sponsors/6.png" alt=""></a></li>
-                <li><a href="#"><img src="../static/images/sponsors/1.png" alt=""></a></li>
-                <li><a href="#"><img src="../static/images/sponsors/2.png" alt=""></a></li>
-                <li><a href="#"><img src="../static/images/sponsors/3.png" alt=""></a></li>
-                <li><a href="#"><img src="../static/images/sponsors/4.png" alt=""></a></li>
-                <li><a href="#"><img src="../static/images/sponsors/5.png" alt=""></a></li>
-                <li><a href="#"><img src="../static/images/sponsors/6.png" alt=""></a></li>
+                <li><a href="#"><img src="{% static 'images/sponsors/1.png' %}" alt=""></a></li>
+                <li><a href="#"><img src="{% static 'images/sponsors/2.png' %}" alt=""></a></li>
+                <li><a href="#"><img src="{% static 'images/sponsors/3.png' %}" alt=""></a></li>
+                <li><a href="#"><img src="{% static 'images/sponsors/4.png' %}" alt=""></a></li>
+                <li><a href="#"><img src="{% static 'images/sponsors/5.png' %}" alt=""></a></li>
+                <li><a href="#"><img src="{% static 'images/sponsors/6.png' %}" alt=""></a></li>
+                <li><a href="#"><img src="{% static 'images/sponsors/1.png' %}" alt=""></a></li>
+                <li><a href="#"><img src="{% static 'images/sponsors/2.png' %}" alt=""></a></li>
+                <li><a href="#"><img src="{% static 'images/sponsors/3.png' %}" alt=""></a></li>
+                <li><a href="#"><img src="{% static 'images/sponsors/4.png' %}" alt=""></a></li>
+                <li><a href="#"><img src="{% static 'images/sponsors/5.png' %}" alt=""></a></li>
+                <li><a href="#"><img src="{% static 'images/sponsors/6.png' %}" alt=""></a></li>
             </ul>
         </div>
     </section>
@@ -208,31 +194,31 @@
             <div class="row">
                 <div class="col-md-8 col-sm-12 tab-column">
                     <div class="section-title">
-                        <h2>Our Child <span>Care Activities</span></h2>
+                        <h2>我们关心 <span>孩子们</span>的</h2>
                     </div>
                     <div class="outer-box">
                         <ul class="tab-list" role="tablist">
                             <li class="item active hvr-bubble-bottom" data-tab-name="Education">
                                 <a href="#Education" aria-controls="Education" role="tab" data-toggle="tab"
                                    class="clearfix">
-                                    Education
+                                    教育
                                 </a>
                             </li>
                             <li class="item hvr-bubble-bottom" data-tab-name="Activities">
                                 <a href="#Activities" aria-controls="Activities" role="tab" data-toggle="tab"
                                    class="clearfix">
-                                    Activities
+                                    活动
                                 </a>
                             </li>
                             <li class="item hvr-bubble-bottom" data-tab-name="Painting">
                                 <a href="#Painting" aria-controls="Painting" role="tab" data-toggle="tab"
                                    class="clearfix">
-                                    Painting
+                                    绘画
                                 </a>
                             </li>
                             <li class="item hvr-bubble-bottom" data-tab-name="Games">
                                 <a href="#Games" aria-controls="Games" role="tab" data-toggle="tab" class="clearfix">
-                                    Games
+                                    玩乐
                                 </a>
 
 
@@ -242,45 +228,29 @@
                     <div class="content-column tab-content">
                         <div class="inner-box tab-pane fade in active " id="Education">
                             <div class="content">
-                                <h2>Let the Learning Begin </h2>
-                                <p>We are group of teachers who really love childrens and enjoy every moment of teaching
-                                    and
-                                    playing with our students.Our teachers graduated from differnt Universities with as
-                                    different subjects but its all included in Education Major. Therefore, we are very
-                                    confident with our knowledge and teaching skills.</p>
+                                <h2>优质的教育资源 </h2>
+                                <p>让孩子们能更开心的学习新知识</p>
                                 <a href="#" class="link">Read More</a>
                             </div>
                         </div>
                         <div class="inner-box tab-pane fade " id="Activities">
                             <div class="content">
-                                <h2>Let the Learning Begin </h2>
-                                <p>We are group of teachers who really love childrens and enjoy every moment of teaching
-                                    and
-                                    playing with our students.Our teachers graduated from differnt Universities with as
-                                    different subjects but its all included in Education Major. Therefore, we are very
-                                    confident with our knowledge and teaching skills.</p>
+                                <h2>丰富的活动 </h2>
+                                <p>丰富的活动让孩子们开心每一天</p>
                                 <a href="#" class="link">Read More</a>
                             </div>
                         </div>
                         <div class="inner-box tab-pane fade " id="Painting">
                             <div class="content">
-                                <h2>Let the Learning Begin </h2>
-                                <p>We are group of teachers who really love childrens and enjoy every moment of teaching
-                                    and
-                                    playing with our students.Our teachers graduated from differnt Universities with as
-                                    different subjects but its all included in Education Major. Therefore, we are very
-                                    confident with our knowledge and teaching skills.</p>
+                                <h2>绘画锻炼想象力</h2>
+                                <p>带领小朋友遨游绘画世界，释放他们的天性</p>
                                 <a href="#" class="link">Read More</a>
                             </div>
                         </div>
                         <div class="inner-box tab-pane fade " id="Games">
                             <div class="content">
-                                <h2>Let the Learning Begin </h2>
-                                <p>We are group of teachers who really love childrens and enjoy every moment of teaching
-                                    and
-                                    playing with our students.Our teachers graduated from differnt Universities with as
-                                    different subjects but its all included in Education Major. Therefore, we are very
-                                    confident with our knowledge and teaching skills.</p>
+                                <h2>玩乐是孩子们的天性</h2>
+                                <p>在玩乐中学习。在玩乐中成长</p>
                                 <a href="#" class="link">Read More</a>
                             </div>
                         </div>
@@ -289,72 +259,31 @@
                 </div>
                 <div class="col-md-4 col-sm-12 testimonial">
                     <div class="section-title">
-                        <h2>What The <span>Parents Say</span></h2>
+                        <h2><span>家长们</span>说</h2>
                     </div>
                     <div class="testimonial-slide">
-
-                        <div class="item center">
-                            <img src="../static/images/team/t1.jpg" alt="">
-                            <div class="img-ifo">
-                                <div class="text">
-                                    <p>Our teachers graduated from differnt Universities with as different subjects but
-                                        its
-                                        all included in Education M</p>
-                                </div>
-                                <div class="rating">
-                                    <span class="star fa fa-star-o"></span>
-                                    <span class="star fa fa-star-o"></span>
-                                    <span class="star fa fa-star-o"></span>
-                                    <span class="star fa fa-star-o"></span>
-                                    <span class="star fa fa-star-o"></span>
-                                </div>
-                                <div class="link">
-                                    <a href="#" class="btn-style-one">Ellina Gilbert</a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="item center">
-                            <img src="../static/images/team/t1.jpg" alt="">
-                            <div class="img-ifo">
-                                <div class="text">
-                                    <p>Our teachers graduated from differnt Universities with as different subjects but
-                                        its
-                                        all included in Education M</p>
-                                </div>
-                                <div class="rating">
-                                    <span class="star fa fa-star-o"></span>
-                                    <span class="star fa fa-star-o"></span>
-                                    <span class="star fa fa-star-o"></span>
-                                    <span class="star fa fa-star-o"></span>
-                                    <span class="star fa fa-star-o"></span>
-                                </div>
-                                <div class="link">
-                                    <a href="#" class="btn-style-one">Ellina Gilbert</a>
+                        {% for feedback in feedbacks %}
+                            <div class="item center">
+                                <img src="{{ feedback.image.url }}" width="90" height="80" alt="">
+                                <div class="img-ifo">
+                                    <div class="text">
+                                        <p>{{ feedback.content }}</p>
+                                        <p>{{ feedback.content }}</p>
+                                        <p>{{ feedback.content }}</p>
+                                    </div>
+                                    <div class="rating">
+                                        <span class="star fa fa-star"></span>
+                                        <span class="star fa fa-star"></span>
+                                        <span class="star fa fa-star"></span>
+                                        <span class="star fa fa-star"></span>
+                                        <span class="star fa fa-star"></span>
+                                    </div>
+                                    <div class="link">
+                                        <a href="#" class="btn-style-one">{{ feedback.name }}</a>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="item center">
-                            <img src="../static/images/team/t1.jpg" alt="">
-                            <div class="img-ifo">
-                                <div class="text">
-                                    <p>Our teachers graduated from differnt Universities with as different subjects but
-                                        its
-                                        all included in Education M</p>
-                                </div>
-                                <div class="rating">
-                                    <span class="star fa fa-star-o"></span>
-                                    <span class="star fa fa-star-o"></span>
-                                    <span class="star fa fa-star-o"></span>
-                                    <span class="star fa fa-star-o"></span>
-                                    <span class="star fa fa-star-o"></span>
-                                </div>
-                                <div class="link">
-                                    <a href="#" class="btn-style-one">Ellina Gilbert</a>
-                                </div>
-                            </div>
-                        </div>
-
-
+                        {% endfor %}
                     </div>
                 </div>
 
