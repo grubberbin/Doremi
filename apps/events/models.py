@@ -1,4 +1,5 @@
 from django.db import models
+from datetime import datetime
 
 
 # Create your models here.
@@ -8,7 +9,7 @@ class Events(models.Model):
     title = models.CharField(max_length=100, verbose_name='标题', null=False, blank=False)
     subject = models.CharField(max_length=100, verbose_name='主题', null=False, blank=False)
     price = models.CharField(max_length=50, verbose_name='费用', null=False, blank=False)
-    create_time = models.DateTimeField(null=False, blank=False, verbose_name='发布时间')
+    create_time = models.DateTimeField(default=datetime.now, verbose_name='发布时间')
     start_time = models.DateTimeField(null=False, blank=False, verbose_name='开始时间')
     end_time = models.DateTimeField(null=False, blank=False, verbose_name='结束时间')
     content = models.TextField(null=False, blank=False, verbose_name='活动内容', default='活动内容:\r\n')
@@ -18,7 +19,8 @@ class Events(models.Model):
     class_id = models.CharField(max_length=50, verbose_name='活动对象', null=False, blank=False)
     teachers = models.CharField(max_length=50, verbose_name='负责老师', null=False, blank=False)
     mobile = models.CharField(max_length=50, verbose_name='联系方式', null=False, blank=False)
-    image = models.ImageField(max_length=100, upload_to='image/%Y/%m/%d', default='image?default.png', verbose_name='封面图')
+    image = models.ImageField(max_length=100, upload_to='image/%Y/%m/%d', default='image?default.png',
+                              verbose_name='封面图')
 
     class Meta:
         verbose_name = '活动'
