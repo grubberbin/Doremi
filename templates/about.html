@@ -14,7 +14,7 @@
         </div>
     </section>
 
-   <section class="about">
+    <section class="about">
         <div class="container">
 
             <div class="row">
@@ -103,7 +103,6 @@
         <div class="see-more">
             <div class="container">
                 <div class="text-center">
-                    <h2>See Our Kindergarten Special Features!</h2>
                     <div class="link">
                         <a href="#" class="theme-btn btn-style-one">加入我们</a>
                     </div>
@@ -257,36 +256,37 @@
 
                     </div>
                 </div>
-                <div class="col-md-4 col-sm-12 testimonial">
-                    <div class="section-title">
-                        <h2><span>家长们</span>说</h2>
-                    </div>
-                    <div class="testimonial-slide">
-                        {% for feedback in feedbacks %}
-                            <div class="item center">
-                                <img src="{{ feedback.image.url }}" width="90" height="80" alt="">
-                                <div class="img-ifo">
-                                    <div class="text">
-                                        <p>{{ feedback.content }}</p>
-                                        <p>{{ feedback.content }}</p>
-                                        <p>{{ feedback.content }}</p>
-                                    </div>
-                                    <div class="rating">
-                                        <span class="star fa fa-star"></span>
-                                        <span class="star fa fa-star"></span>
-                                        <span class="star fa fa-star"></span>
-                                        <span class="star fa fa-star"></span>
-                                        <span class="star fa fa-star"></span>
-                                    </div>
-                                    <div class="link">
-                                        <a href="#" class="btn-style-one">{{ feedback.name }}</a>
+                {% if  feedbacks %}
+                    <div class="col-md-4 col-sm-12 testimonial">
+                        <div class="section-title">
+                            <h2><span>家长们</span>说</h2>
+                        </div>
+                        <div class="testimonial-slide">
+                            {% for feedback in feedbacks %}
+                                <div class="item center">
+                                    <img src="{{ feedback.image.url }}" width="90" height="80" alt="">
+                                    <div class="img-ifo">
+                                        <div class="text">
+                                            <p>{{ feedback.content }}</p>
+                                            <p>{{ feedback.content }}</p>
+                                            <p>{{ feedback.content }}</p>
+                                        </div>
+                                        <div class="rating">
+                                            <span class="star fa fa-star"></span>
+                                            <span class="star fa fa-star"></span>
+                                            <span class="star fa fa-star"></span>
+                                            <span class="star fa fa-star"></span>
+                                            <span class="star fa fa-star"></span>
+                                        </div>
+                                        <div class="link">
+                                            <a href="#" class="btn-style-one">{{ feedback.name }}</a>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-                        {% endfor %}
+                            {% endfor %}
+                        </div>
                     </div>
-                </div>
-
+                {% endif %}
             </div>
 
 
