@@ -699,6 +699,65 @@ end===================
     background: #ff8454;
 }
 
+/***
+
+====================================================================
+    news style
+====================================================================
+
+***/
+
+
+.news {
+    position: relative;
+    padding: 100px 0 120px;
+}
+
+.news .list {
+    position: relative;
+}
+
+.news .list li {
+    position: relative;
+    font-family: "dosis";
+    color: #777;
+    font-size: 18px;
+    padding-left: 38px;
+    padding-bottom: 8px;
+    margin-left: 450px;
+}
+
+.news .list span {
+    margin-left: 450px;
+}
+
+.news .list li:before {
+    position: absolute;
+    content: "";
+    left: 0px;
+    top: 6px;
+    width: 15px;
+    height: 15px;
+    background: #f8ba59;
+    border-radius: 50%;
+}
+
+.news .list li:after {
+    position: absolute;
+    content: "";
+    left: 3px;
+    top: 9px;
+    width: 9px;
+    height: 9px;
+    border: 2px solid #fff;
+    border-radius: 50%;
+}
+
+
+.news .img-box img {
+    width: 100%;
+    border-radius: 0 15px 0 15px;
+}
 
 /***
 

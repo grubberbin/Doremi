@@ -17,8 +17,9 @@
     <section class="news">
         {% for news in news_list %}
             <ul class="list">
-                <li><a class="link news" href="/news/{{ news.id }}/"> {{ news.title }}</a>
-                    <span> {{ news.time }}</span></li>
+                <li><a class="link news-link" href="/news/{{ news.id }}/"> {{ news.title }}
+                    <span> {{ news.time }}</span></a>
+                </li>
             </ul>
         {% empty %}
             <div class="link-btn center"><a href="{% url 'main:index' %} " class="theme-btn btn-style-one">没有新闻哦</a>
