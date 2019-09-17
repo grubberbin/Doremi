@@ -728,7 +728,8 @@ end===================
 }
 
 .news .list span {
-    margin-left: 450px;
+    float: right;
+    margin-right: 300px;
 }
 
 .news .list li:before {
@@ -757,6 +758,23 @@ end===================
 .news .img-box img {
     width: 100%;
     border-radius: 0 15px 0 15px;
+}
+
+
+.page-nav {
+    margin:auto;
+    width: 500px;
+}
+
+.page-nav .div.nav{
+    text-align: center;
+}
+
+.page-nav .div .nav .ul .pagination {
+    padding-left: 0;
+    width: 100px;
+    margin: auto;
+    border-radius: 4px;
 }
 
 /***

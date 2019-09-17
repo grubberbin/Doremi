@@ -15,15 +15,62 @@
     </section>
 
     <section class="news">
-        {% for news in news_list %}
-            <ul class="list">
+        <ul class="list">
+            {% for news in page.object_list %}
+
                 <li><a class="link news-link" href="/news/{{ news.id }}/"> {{ news.title }}
                     <span> {{ news.time }}</span></a>
                 </li>
-            </ul>
-        {% empty %}
-            <div class="link-btn center"><a href="{% url 'main:index' %} " class="theme-btn btn-style-one">没有新闻哦</a>
-            </div>
-        {% endfor %}
+            {% empty %}
+                <div class="link-btn center"><a href="{% url 'main:index' %} " class="theme-btn btn-style-one">没有新闻哦</a>
+                </div>
+            {% endfor %}
+        </ul>
+
+    </section>
+
+    <section class="page-nav">
+        <div>
+            <nav aria-label="Page navigation">
+                <ul class="pagination">
+                    {% if page.has_previous %}
+                        <li>
+                            <a href="?page={{ page.previous_page_number }}" aria-label="Previous">
+                                <span aria-hidden="true">&laquo;</span>
+                            </a>
+                        </li>
+                    {% else %}
+                        <li class="disabled">
+                            <a href="#" aria-label="Previous">
+                                <span aria-hidden="true">&laquo;</span>
+                            </a>
+                        </li>
+                    {% endif %}
+
+                    {% for number in page_range %}
+                        {% if current_page == number %}
+                            <li class="active"><a href="?page={{ number }}">{{ number }}</a></li>
+                        {% else %}
+                            <li><a href="?page={{ number }}">{{ number }}</a></li>
+                        {% endif %}
+
+                    {% endfor %}
+                    {% if page.has_next %}
+                        <li>
+                            <a href="?page={{ page.next_page_number }}" aria-label="Next">
+                                <span aria-hidden="true">&raquo;</span>
+                            </a>
+                        </li>
+                    {% else %}
+                        <li class="disabled">
+                            <a href="#" aria-label="Next">
+                                <span aria-hidden="true">&raquo;</span>
+                            </a>
+                        </li>
+                    {% endif %}
+
+                </ul>
+            </nav>
+        </div>
     </section>
 {% endblock %}
