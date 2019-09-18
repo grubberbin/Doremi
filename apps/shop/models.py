@@ -31,8 +31,9 @@ class Goods(models.Model):
 
 class Cart(models.Model):
     id = models.AutoField(verbose_name='id', primary_key=True)
-    u_id = models.ForeignKey(to=UserProfile, verbose_name='用户id', null=False, on_delete=models.DO_NOTHING)
-    g_id = models.ForeignKey(to="Goods", to_field="id", on_delete=models.DO_NOTHING)
+    u_id = models.ForeignKey(UserProfile, verbose_name='用户id', null=False, on_delete=models.DO_NOTHING)
+    g_id = models.ForeignKey(Goods, verbose_name="商品id", on_delete=models.DO_NOTHING)
+    count = models.CharField(max_length=10, verbose_name='数量', default='')
 
     class Meta:
         verbose_name = '购物车'

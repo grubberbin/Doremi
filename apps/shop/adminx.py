@@ -1,6 +1,6 @@
 import xadmin
 from xadmin import views
-from .models import Goods, Order
+from .models import Goods, Order, Cart
 
 
 # ----- adminx 全局配置
@@ -29,5 +29,12 @@ class OrdersManager(object):
     list_filter = ['type', 'pay_method']
 
 
+class CartManager(object):
+    list_display = ['id', 'g_id', 'u_id', 'count']
+    search_fields = ['id', 'g_id', 'u_id']
+    list_filter = ['g_id', 'u_id']
+
+
 xadmin.site.register(Goods, GoodsManager)
 xadmin.site.register(Order, OrdersManager)
+xadmin.site.register(Cart, CartManager)
