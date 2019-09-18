@@ -15,12 +15,13 @@
         </div>
     </section>
 
-    <section class="page-news-content center">
+    <section class="page-news-content">
         <h4>{{ news.title }}</h4>
-        <h7>{{ news.time }}</h7>
-        <p>
+        <span>发布时间： {{ news.time }}</span>
+        <div style="TEXT-INDENT: 2em" class="article">
             {{ news.content }}
-        </p>
+        </div>
+
 
     </section>
 {% endblock %}
