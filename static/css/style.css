@@ -762,11 +762,11 @@ end===================
 
 
 .page-nav {
-    margin:auto;
+    margin: auto;
     width: 500px;
 }
 
-.page-nav .div.nav{
+.page-nav .div.nav {
     text-align: center;
 }
 
@@ -775,6 +775,26 @@ end===================
     width: 100px;
     margin: auto;
     border-radius: 4px;
+}
+
+
+.page-news-content {
+    text-align: center;
+    margin-top: 100px;
+}
+
+.page-news-content span {
+    margin-top: 10px;
+}
+
+.page-news-content .content {
+    margin-top: 10px;
+}
+
+
+.article {
+    text-align: center;
+    margin-top: 50px;
 }
 
 /***
@@ -5565,11 +5585,11 @@ body.popup-visible {
     padding: 9px 15px;
     border: 1px solid #e0e0e0;
     border-radius: 0 10px;
-    width: 230px;
+    width: 550px;
     background: none;
     font-weight: 500;
     outline: none;
-    height: 50px;
+    height: 100px;
 }
 
 .cart-section .estimate-form {
@@ -6374,6 +6394,7 @@ body.popup-visible {
     border: 1px solid #ECECEC;
     width: 100%;
     height: 100%;
+    margin-left: 12px;
     line-height: 44px;
     outline: none;
     display: block;
@@ -6381,12 +6402,25 @@ body.popup-visible {
     border-radius: 0 10px;
 }
 
-.single-class-content .bottom-box .thm-btn {
+.single-class-content .thm-btn {
     font-size: 16px;
     font-family: 'dosis-bold';
     padding: 12px 22px;
     min-width: 150px;
     margin-right: 20px;
+}
+
+.single-class-content .norms {
+    margin-top: 20px;
+    margin-bottom: 60px;
+}
+
+.single-class-content .total {
+    margin-top: 20px;
+    margin-bottom: 20px;
+    font-family: 'dosis-bold';
+    font-size: 18px;
+    color: #8a7bd1;
 }
 
 .single-class-content .share-box a {
@@ -6402,7 +6436,7 @@ body.popup-visible {
 }
 
 .single-class-content .tab-box {
-    margin-top: 50px;
+    margin-top: 80px;
 }
 
 .single-class-content .tab-box .tab-title ul,
