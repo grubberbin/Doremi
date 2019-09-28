@@ -5949,7 +5949,7 @@ body.popup-visible {
     border-color: #f7542b;
 }
 
-.checkout-page .your-order {
+.checkout-page .order {
     position: relative;
     margin-bottom: 40px;
     padding-bottom: 30px;
@@ -5992,7 +5992,6 @@ body.popup-visible {
     vertical-align: middle;
     line-height: 24px;
     padding: 15px 15px;
-    width: 50%;;
     color: #232323;
     font-family: 'dosis-medium';
     font-size: 17px;
