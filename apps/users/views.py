@@ -5,7 +5,8 @@ from django.views.generic.base import View
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.backends import ModelBackend
 from django.db.models import Q
-from django.shortcuts import render, HttpResponse, HttpResponsePermanentRedirect, render_to_response
+from django.shortcuts import render, HttpResponse, HttpResponsePermanentRedirect
+from django.http import JsonResponse
 from django.contrib.auth.hashers import make_password
 from django.urls import reverse
 
@@ -96,21 +97,33 @@ class ForgetPwdView(View):
 # userprofile
 class UserInfoView(LoginRequiredMixin, View):
     def get(self, request):
+        '''
+
+        :param request:
+        :return:
+        '''
         return render(request, 'users/usercenter-info.html')
 
     # 用户修改昵称，手机号，地址，生日
     def post(self, request):
-        user_info_form = UserInfoForm(request.POST, instance=request.user)
-        res = dict()
+        gender = request.POST.get('gender')
+        email = request.POST.get('email')
+        phone = request.POST.get('phone')
+        address = request.POST.get('address')
 
-        if user_info_form.is_valid():
-            user_info_form.save()
-            res['status'] = 'success'
+        if gender and email and phone and address:
+            user = UserProfile.objects.get(username=request.user.username)
 
+            user.gender = 'male' if (gender == '1') else 'female'
+            user.mobile = phone
+            user.address = address
+            user.email = email
+            user.save()
+            res = 'success'
         else:
-            res = user_info_form.errors
+            res = 'fail'
 
-        return HttpResponse(json.dumps(res), content_type='application/json')
+        return JsonResponse({'status': res, 'message': '个人信息更新成功'})
 
 
 # 用户登出
