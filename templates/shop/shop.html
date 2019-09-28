@@ -2,7 +2,8 @@
 {% load staticfiles %}
 
 {% block title %}商城 - 哆唻咪启蒙乐园{% endblock %}
-
+{% block custom_head_js %}
+{% endblock %}
 
 {% block custom_content %}
     <section class="page-title center">
@@ -34,7 +35,9 @@
                                     <h2><a href="#">{{ goods.name }}</a></h2>
                                     <p>{{ goods.price }} 元</p>
                                     <div class="cart">
-                                        <a href="cart-page.html"><span class="flaticon-shop"></span></a>
+                                        <a href="javascript:void(0); onclick = add_cart({{ goods.id }},1)"
+                                           class="add_cart" id="add_cart"><span
+                                                class="flaticon-shop"></span></a>
                                     </div>
                                 </div>
                             </div>
@@ -49,4 +52,26 @@
         {% endif %}
     </section>
 
+{% endblock %}
+
+{% block custom_body_js %}
+    <script type='text/javascript'>
+        function add_cart(gid, count) {
+            if (gid && count) {
+                console.log('addcat', gid, count)
+
+                $.post('/shop/cart/', {'gid': gid, 'count': count}, function (data) {
+                        console.log(data)
+                        if (data['status'] == 'success') {
+                            alert('添加购物车成功')
+                        } else {
+                            alert('添加购物车失败')
+                        }
+                    }, 'json'
+                )
+            } else {
+                console.log('addcat is null')
+            }
+        }
+    </script>
 {% endblock %}

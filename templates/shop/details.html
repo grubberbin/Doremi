@@ -89,31 +89,33 @@
                             <div class="input-box pull-left">
                                 <span>数量:</span><input type="number" value="1">
                             </div>
-                            <div class="button-box pull-left">
-                                <a href="{% url "shop:add_cart" goods_id=goods.id quantity=1 %}"
-                                   class="thm-btn btn-style-one">加到购物车</a>
-                            </div>
-                            <div class="button-box pull-left">
-                                <a href="{% url "shop:order" %}" class="thm-btn btn-style-one">购买</a>
-                            </div>
-                            <div class="share-box pull-left">
-                                <a href="#" class="share-btn"><span class="icon-symbol"></span></a>
-                            </div>
+                        </div>
+
+                        <div class="norms">
+                            <div>规格:</div>
+                            <ul>
+                                {% for standard in same_spu_products %}
+                                    <li><a href="{% url 'product:detail' standard.id %}">{{ standard.unite }}</a></li>
+                                {% endfor %}
+                            </ul>
 
                         </div>
+
+                        <div class="total">总价：<em id='gtotal'></em></div>
+
+                        <div class="button-box pull-left">
+                            <a href="{% url "shop:add_cart" goods_id=goods.id quantity=1 %}"
+                               class="thm-btn btn-style-one">加到购物车</a>
+                        </div>
+                        <div class="button-box pull-left">
+                            <a href="{% url "shop:order" %}" class="thm-btn btn-style-one">立即购买</a>
+                        </div>
+
+                        <div class="share-box pull-left">
+                            <a href="#" class="share-btn"><span class="icon-symbol"></span></a>
+                        </div>
+
                         <div class="tab-box">
-                            {#                            <div class="tab-title">#}
-                            {#                                <ul role="tablist">#}
-                            {#                                    <li class="active" data-tab-name="description"><span class="curve-bottom"></span><a#}
-                            {#                                            href="#description" aria-controls="description" role="tab"#}
-                            {#                                            data-toggle="tab">{{ goods.tag }}</a></li>#}
-                            {#                                    <li data-tab-name="review"><span class="curve-bottom"></span><a href="#review"#}
-                            {#                                                                                                    aria-controls="review"#}
-                            {#                                                                                                    role="tab"#}
-                            {#                                                                                                    data-toggle="tab">Activities</a>#}
-                            {#                                    </li>#}
-                            {#                                </ul>#}
-                            {#                            </div>#}
                             <div class="tab-content">
                                 <div class="single-tab-content tab-pane fade in active" id="description">
                                     {{ goods.description }}
@@ -146,7 +148,7 @@
                                 <h2><a href="/shop/goods/{{ item.id }}">{{ item.name }}</a></h2>
                                 <p>{{ item.price }} 元</p>
                                 <div class="cart">
-                                    <a href="cart-page.html"><span class="flaticon-shop"></span></a>
+                                    <a href="cart.html"><span class="flaticon-shop"></span></a>
                                 </div>
                             </div>
                         </div>

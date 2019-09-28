@@ -9,7 +9,6 @@
             <h2>购物车</h2>
             <ul>
                 <li><a href="{% url 'main:index' %}">主页</a></li>
-                {#                <li><a href="{% url 'shop:good_details' goods_list.id %}">Goods</a></li>#}
                 <li><a href="#">购物车</a></li>
             </ul>
         </div>
@@ -27,7 +26,7 @@
                                 <thead class="cart-header">
                                 <tr>
                                     <th class="prod-column">商品名称</th>
-                                    <th>&nbsp;</th>
+                                    <th>单位</th>
                                     <th class="price">单价</th>
                                     <th>数量</th>
                                     <th>总计</th>
@@ -69,7 +68,8 @@
                             <div class="pull-left">
                                 <div class="apply-coupon clearfix">
                                     <div class="form-group clearfix">
-                                        <input type="text" name="coupon-code" value="" placeholder="留言">
+                                        <input type="text" id="cart-message" name="coupon-code" value=""
+                                               placeholder="留言">
                                     </div>
                                 </div>
                             </div>
@@ -81,10 +81,10 @@
                                 <!--Totals Table-->
                                 <ul class="totals-table">
                                     <li class="clearfix"><span class="col col-title">商品数量</span>
-                                        <span class="col" id="t-count">{{ goods.pric }}</span>
+                                        <span class="col" id="t-count">{{ goods.pric }} 个 </span>
                                     </li>
                                     <li class="clearfix total"><span class="col col-title">需付金额</span>
-                                        <span class="col" id="t-price">{{ goods.price }}</span>
+                                        <span class="col" id="t-price">{{ goods.price }} 元</span>
                                     </li>
                                 </ul>
 

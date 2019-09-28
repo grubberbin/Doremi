@@ -1,0 +1,110 @@
+﻿{% extends 'base.html' %}
+{% load staticfiles %}
+
+{% block title %}订单页 - 哆唻咪启蒙乐园{% endblock %}
+
+{% block custom_content %}
+    <section class="page-title center">
+        <div class="container">
+            <h2>Order</h2>
+            <ul>
+                <li><a href="{% url "main:index" %}">主页</a></li>
+                <li><a href="#">订单提交</a></li>
+            </ul>
+        </div>
+    </section>
+
+    <div class="checkout-page">
+        <div class="container">
+            {% if goods_list %}
+                <div class="row clearfix">
+                    <form class="order" method="post" action="{% url "shop:order" %}">
+                        <div class="col-md-12 col-sm-12 col-xs-12">
+                            <div class="order">
+                                <div class="default-title"><h2>商品列表</h2></div>
+                                <!--Orders Table-->
+                                <ul class="orders-table">
+                                    <li class="table-header clearfix">
+                                        <div class="col">图片</div>
+                                        <div class="col st-2">名称</div>
+                                        <div class="col st-3">单位</div>
+                                        <div class="col st-4">数量</div>
+                                        <div class="col st-2">小计</div>
+                                    </li>
+                                    {% for goods in goods_list %}
+                                        <li class="goods-list clearfix">
+                                            <div class="col st-2">
+                                                <img src="{{ goods.g_id.pic.url }}" width="60"
+                                                     height="60" alt="{{ goods.g_id.name }}">
+                                            </div>
+                                            <div class="col st-2">{{ goods.g_id.name }}</div>
+                                            <div class="col st-2">{{ goods.g_id.unit }}</div>
+                                            <div class="col st-2">{{ goods.count }}</div>
+                                            <div class="col st-2" id="sub-total">{{ goods.total }}</div>
+                                        </li>
+                                    {% endfor %}
+                                    <li class="postage clearfix">
+                                        <div class="col st-4">邮费</div>
+                                        <div class="col st-4">0.0 元</div>
+                                    </li>
+                                    <li class="clearfix total">
+                                        <div class="col st-3">合计</div>
+                                        <div class="col st-3" id="order-total"></div>
+                                    </li>
+                                </ul>
+
+                            </div>
+
+
+                            <!--Place Order-->
+                            <div class="place-order">
+                                <div class="default-title"><h2>选择支付方式：</h2></div>
+                                <!--Payment Options-->
+                                <div class="payment-options">
+                                    <ul>
+                                        <li>
+                                            <div class="radio-option">
+                                                <input type="radio" name="payment-group" id="payment-1">
+                                                <label for="payment-1"><strong>支付宝</strong></label>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div class="radio-option">
+                                                <input type="radio" name="payment-group" id="payment-2">
+                                                <label for="payment-2"><strong>货到付款</strong></label>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <button class="theme-btn btn-style-one ">订单支付 <span
+                                        class="fa fa-long-arrow-right"></span></button>
+                            </div><!--End Place Order-->
+                        </div>
+                    </form>
+                </div>
+            {% else %}
+                <div class="button center">
+                    <button type="button" class="thm-btn update-cart btn-style-one">沒有商品哦，快去购买吧</button> &nbsp;
+                </div>
+            {% endif %}
+        </div>
+    </div>
+
+{% endblock %}
+
+{% block custom_body_js %}
+    <script>
+
+        //计算总件数以及总价格
+        function update_total_price() {
+            total_price = 0;
+            $('.goods-list').each(function () {
+                p_price = $(this).find('#sub-total').text();
+                total_price += parseFloat(p_price);
+            });
+            $('#order-total').text(total_price.toFixed(1)+'元');
+        }
+
+        update_total_price();
+    </script>
+{% endblock %}
