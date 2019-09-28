@@ -78,7 +78,7 @@ class AddCartView(View):
         return render(request, 'shop/cart.html', {'goods_list': goods_list, 'msg': msg})
 
 
-class updateCartView(View):
+class UpdateCartView(LoginRequiredMixin,View):
     def post(self, request):
         user = request.user
         if not user.is_authenticated:
@@ -120,6 +120,9 @@ class updateCartView(View):
 class OrderInfoView(LoginRequiredMixin, View):
 
     def get(self, request):
+        user = request.user
+        if not user.is_authenticated:
+            return JsonResponse({'res': 0, 'errmsg': '请先登录'})
 
         username = request.user
         user = UserProfile.objects.get(username=username)
@@ -132,4 +135,8 @@ class OrderInfoView(LoginRequiredMixin, View):
     @csrf_exempt
     def post(self, request):
         res = dict()
+        user = request.user
+        if not user.is_authenticated:
+            return JsonResponse({'res': 0, 'errmsg': '请先登录'})
+
         return render(request,'shop/pageJump.html')
