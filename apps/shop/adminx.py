@@ -18,9 +18,9 @@ class GlobalSettings:
 # ------
 
 class GoodsManager(object):
-    list_display = ['name', 'price', 'color', 'number']
+    list_display = ['name', 'price', 'color', 'unit', 'stock']
     search_fields = ['name']
-    list_filter = ['price', 'number']
+    list_filter = ['price', 'stock']
 
 
 class OrdersManager(object):

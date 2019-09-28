@@ -28,7 +28,7 @@ class ProductInfoView(View):
         goods = Goods.objects.get(Q(id=goods_id))
         others_list = Goods.objects.filter(Q(type=goods.type) & ~Q(id=goods.id))
 
-        return render(request, 'shop/product-details.html', {'goods': goods, 'others_list': others_list})
+        return render(request, 'shop/details.html', {'goods': goods, 'others_list': others_list})
 
 
 class CartInfoView(LoginRequiredMixin, View):
@@ -41,7 +41,7 @@ class CartInfoView(LoginRequiredMixin, View):
         for cart in cart_list:
             cart.total = float(cart.g_id.price) * int(cart.count)
 
-        return render(request, 'shop/cart-page.html', {'cart_list': cart_list})
+        return render(request, 'shop/cart.html', {'cart_list': cart_list})
 
     @csrf_exempt
     def post(self, request):
@@ -75,7 +75,7 @@ class AddCartView(View):
             msg = '购物车没有宝贝哦，快去添加吧！'
         else:
             msg = '欢迎购物！'
-        return render(request, 'shop/cart-page.html', {'goods_list': goods_list, 'msg': msg})
+        return render(request, 'shop/cart.html', {'goods_list': goods_list, 'msg': msg})
 
 
 class updateCartView(View):
@@ -117,7 +117,19 @@ class updateCartView(View):
         return JsonResponse({'res': 5, 'message': '更新成功'})
 
 
-class CheckoutPageView(View):
+class OrderInfoView(LoginRequiredMixin, View):
 
     def get(self, request):
-        return render(request, 'shop/checkout-page.html')
+
+        username = request.user
+        user = UserProfile.objects.get(username=username)
+        cart_list = Cart.objects.filter(u_id=user)
+        for cart in cart_list:
+            cart.total = float(cart.g_id.price) * int(cart.count)
+
+        return render(request, 'shop/order.html', {'goods_list': cart_list})
+
+    @csrf_exempt
+    def post(self, request):
+        res = dict()
+        return render(request,'shop/pageJump.html')

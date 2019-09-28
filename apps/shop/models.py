@@ -10,6 +10,7 @@ class Goods(models.Model):
     id = models.AutoField(verbose_name='商品id', primary_key=True)
     name = models.CharField(null=False, blank=False, verbose_name='名称', max_length=10)
     color = models.CharField(null=False, blank=False, verbose_name='颜色', max_length=10)
+    unit = models.CharField(null=False, blank=False, verbose_name='单位', max_length=20, default='')
     price = models.FloatField(null=False, blank=False, verbose_name='价格', max_length=10)
     pic = models.ImageField(max_length=100, upload_to='goods/%Y/%m/%d', default='image/default.png', verbose_name='图片')
     description = models.TextField(null=False, blank=True, verbose_name='描述')
