@@ -56,7 +56,7 @@
                                                    value="{{ cart.count }}"
                                                    name="quantity"></td>
                                         <td class="sub-total" id="sub-total">{{ cart.total }}</td>
-                                        <td class="remove"><a href="#" class="remove-btn"><span
+                                        <td class="remove" cart_id = "{{ cart.id }}"><a class="remove-btn"><span
                                                 class="fa fa-times"></span></a>
                                         </td>
                                     </tr>
@@ -98,7 +98,7 @@
                     </form>
                 {% else %}
                     <div class="button center">
-                        <button type="button" class="thm-btn update-cart btn-style-one">购物车空空如也</button> &nbsp;
+                        <button type="button"  class="thm-btn update-cart btn-style-one"><a href="{% url  'shop:shop'%}">购物车空空如也,快去添加吧！</a></button> &nbsp;
                     </div>
                 {% endif %}
             </div>
@@ -141,11 +141,10 @@
             params = {sku_id, count, csrfmiddlewaretoken}
             $.ajaxSettings.async = false;
             $.post('/shop/cart/update', params, function (data) {
-                if (data['res'] == 5) {
+                if (data.res == 5) {
                     console.log(g_count);
                 } else {
                     alert(data['errmsg']);
-                    console.log(g_count);
                     $(this).val(g_count)
                 }
             });
@@ -154,7 +153,27 @@
             total_p = parseFloat(price) * parseInt(count);
             $(this).parents('tr').find('.sub-total').text(total_p.toFixed(1))
         });
-        update_total_price()
+        update_total_price();
+
+        //删除商品
+        $('.cart_list_td').children('.remove').children('a').click(function () {
+
+            cart_id = $(this).parents('tr').find('.remove').attr('cart_id');
+            console.log('deletecat', cart_id);
+            cart_remove = $(this).parents('tr');
+            console.log(cart_id)
+            $.post('/shop/cart/delete', {'cart_id': cart_id}, function (data) {
+                    console.log(data)
+                    if (data.res == 2) {
+                        alert(data.message);
+                        cart_remove.remove();
+                        update_total_price();
+                    } else {
+                        alert(data.errmsg)
+                    }
+                }, 'json'
+            )
+        });
 
     </script>
 {% endblock %}

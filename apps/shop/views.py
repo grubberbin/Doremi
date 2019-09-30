@@ -78,7 +78,29 @@ class AddCartView(View):
         return render(request, 'shop/cart.html', {'goods_list': goods_list, 'msg': msg})
 
 
-class UpdateCartView(LoginRequiredMixin,View):
+class DeleteCartView(LoginRequiredMixin,View):
+
+    def post(self,request):
+        user = request.user
+        if not user.is_authenticated:
+            return JsonResponse({'res': 0, 'errmsg': '请先登录'})
+
+        # 接收数据
+        cart_id = request.POST.get('cart_id')
+
+        # 数据校验
+        if not cart_id:
+            return JsonResponse({'res': 1, 'errmsg': '无效商品id'})
+
+
+        # 业务处理：删除购物车
+        Cart.objects.filter(id=cart_id).delete()
+
+        # 返回应答
+        return JsonResponse({'res': 2, 'message': '删除  成功'})
+
+
+class UpdateCartView(LoginRequiredMixin, View):
     def post(self, request):
         user = request.user
         if not user.is_authenticated:
@@ -139,4 +161,4 @@ class OrderInfoView(LoginRequiredMixin, View):
         if not user.is_authenticated:
             return JsonResponse({'res': 0, 'errmsg': '请先登录'})
 
-        return render(request,'shop/pageJump.html')
+        return render(request, 'shop/pageJump.html')

@@ -64,6 +64,7 @@ class Order(models.Model):
     address = models.CharField(max_length=100, verbose_name='收货地址', null=False, blank=False)
     count = models.IntegerField(blank=False, null=False, verbose_name='商品数量', default=1)
     pay_method = models.CharField(choices=PAY_METHOD_CHOICES, verbose_name='付款方式', max_length=10)
+    add_time = models.DateTimeField(default=datetime.now, verbose_name='添加时间')
 
     class Meta:
         verbose_name = '订单'
