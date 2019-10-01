@@ -32,7 +32,7 @@
                                                                               alt="{{ goods.name }}"></a>
                                 </figure>
                                 <div class="content">
-                                    <h2><a href="#">{{ goods.name }}</a></h2>
+                                    <h2><a href="/shop/goods/{{ goods.id }}">{{ goods.name }}</a></h2>
                                     <p>{{ goods.price }} 元</p>
                                     <div class="cart">
                                         <a href="javascript:void(0); onclick = add_cart({{ goods.id }},1)"
@@ -60,9 +60,9 @@
             if (gid && count) {
                 console.log('addcat', gid, count)
 
-                $.post('/shop/cart/', {'gid': gid, 'count': count}, function (data) {
+                $.post('/shop/cart/add', {'sku_id': gid, 'count': count}, function (data) {
                         console.log(data)
-                        if (data['status'] == 'success') {
+                        if (data.res == 6) {
                             alert('添加购物车成功')
                         } else {
                             alert('添加购物车失败')

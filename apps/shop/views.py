@@ -1,7 +1,8 @@
 from django.shortcuts import render
 from django.views.generic.base import View
 from django.db.models import Q
-from django.shortcuts import render, HttpResponse
+from django.shortcuts import render, HttpResponse, HttpResponsePermanentRedirect
+from django.urls import reverse
 from django.http import HttpResponse, JsonResponse
 from .models import Goods, Order, Cart
 from users.models import UserProfile
@@ -37,9 +38,10 @@ class CartInfoView(LoginRequiredMixin, View):
 
         username = request.user
         user = UserProfile.objects.get(username=username)
-        cart_list = Cart.objects.filter(u_id=user)
-        for cart in cart_list:
-            cart.total = float(cart.g_id.price) * int(cart.count)
+        try:
+            cart_list = Cart.objects.filter(u_id_id=user.id)
+        except Cart.DoesNotExist:
+            return
 
         return render(request, 'shop/cart.html', {'cart_list': cart_list})
 
@@ -63,24 +65,60 @@ class CartInfoView(LoginRequiredMixin, View):
         return HttpResponse(json.dumps(res), content_type='application/json')
 
 
-class AddCartView(View):
+class AddCartView(LoginRequiredMixin, View):
 
-    def get(self, request, goods_id, quantity):
-        goods = Goods.objects.get(Q(id=goods_id))
-        goods.quantity = quantity
-        goods.total = quantity * goods.price
-        goods_list = [goods, ]
+    def post(self, request):
+        user = request.user
+        if not user.is_authenticated:
+            return JsonResponse({'res': 0, 'errmsg': '请先登录'})
 
-        if not goods_list:
-            msg = '购物车没有宝贝哦，快去添加吧！'
-        else:
-            msg = '欢迎购物！'
-        return render(request, 'shop/cart.html', {'goods_list': goods_list, 'msg': msg})
+        # 接收数据
+        sku_id = request.POST.get('sku_id')
+        count = request.POST.get('count')
+
+        # 数据校验
+        if not all([sku_id, count]):
+            return JsonResponse({'res': 1, 'errmsg': '数据不完整'})
+
+        # 校验添加的商品数：
+        try:
+            count = int(count)
+        except Exception as e:
+            # 数目出错
+            return JsonResponse({'res': 2, 'errmsg': '商品数目出错'})
+
+        # 校验商品是否存在：
+        try:
+            sku = Goods.objects.get(id=sku_id)
+        except Goods.DoesNotExist:
+            # 商品不存在
+            return JsonResponse({'res': 3, 'errmsg': '商品不存在'})
+
+        # 校验商品库存
+        if count > sku.stock:
+            return JsonResponse({'res': 4, 'errmsg': '商品库存不足'})
+
+            # 业务处理：更新购物车
+
+        user = UserProfile.objects.get(username=user.username)
+
+        try:
+            cart = Cart.objects.get(g_id_id=sku_id)
+            number = int(cart.count)
+            number += count
+            cart.count = str(number)
+            cart.save()
+        except Cart.DoesNotExist:
+            Cart.objects.create(g_id_id=sku_id, u_id_id=user.id, count=count)
+            return JsonResponse({'res': 6, 'message': '商品已加入购物车'})
+
+            # 返回应答
+        return JsonResponse({'res': 6, 'message': '商品已加入购物车'})
 
 
-class DeleteCartView(LoginRequiredMixin,View):
+class DeleteCartView(LoginRequiredMixin, View):
 
-    def post(self,request):
+    def post(self, request):
         user = request.user
         if not user.is_authenticated:
             return JsonResponse({'res': 0, 'errmsg': '请先登录'})
@@ -91,7 +129,6 @@ class DeleteCartView(LoginRequiredMixin,View):
         # 数据校验
         if not cart_id:
             return JsonResponse({'res': 1, 'errmsg': '无效商品id'})
-
 
         # 业务处理：删除购物车
         Cart.objects.filter(id=cart_id).delete()

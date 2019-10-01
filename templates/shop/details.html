@@ -51,7 +51,7 @@
                                     <img src="{{ goods.pic.url }}" alt="{{ goods.name }}">
                                 </div>
                             </div>
-                            <div class="link"><a href="{% url "shop:add_cart" goods_id=goods.id quantity=1 %}">
+                            <div class="link"><a>
                                 <span class="icon-add"></span></a></div>
                         </div>
 
@@ -75,7 +75,7 @@
                             <div class="text">
                                 {{ goods.description }}
                             </div>
-                            <div class="price-box">
+                            <div class="price-box" sku_id="{{ goods.id }}">
                                 {{ goods.price }} 元
                             </div>
                             <div class="extra-price">
@@ -87,7 +87,7 @@
 
                         <div class="bottom-box clearfix">
                             <div class="input-box pull-left">
-                                <span>数量:</span><input type="number" value="1">
+                                <span>数量:</span><input type="number" id="number" value="1">
                             </div>
                         </div>
 
@@ -104,8 +104,7 @@
                         <div class="total">总价：<em id='gtotal'></em></div>
 
                         <div class="button-box pull-left">
-                            <a href="{% url "shop:add_cart" goods_id=goods.id quantity=1 %}"
-                               class="thm-btn btn-style-one">加到购物车</a>
+                            <a class="thm-btn btn-style-one" id="add_cart">加到购物车</a>
                         </div>
                         <div class="button-box pull-left">
                             <a href="{% url "shop:order" %}" class="thm-btn btn-style-one">立即购买</a>
@@ -159,4 +158,46 @@
         </div>
     </section>
 
+{% endblock %}
+
+{% block custom_body_js %}
+    <script>
+        function upate_total() {
+            //total =
+            price = $('.price-box').text().split('元')[0];
+            num = $('#number').val();
+            total = parseFloat(price.trim()) * parseInt(num);
+            $('#gtotal').text(total.toFixed(1) + '元')
+
+        }
+
+        $('#number').blur(function () {
+
+            count = $(this).val();
+            g_count = count;
+            if (parseInt(count <= 0) || isNaN(count)) {
+                //输入值无效
+                $(this).val(g_count);
+                return
+            }
+            upate_total();
+        });
+        upate_total();
+
+
+        $('#add_cart').click(function () {
+            sku_id = $('.price-box').attr('sku_id');
+            count = $('#number').val();
+            $.post('/shop/cart/add', {'sku_id': sku_id, 'count': count}, function (data) {
+                if (data.res == 6) {
+                    alert(data.message);
+                } else {
+                    alert(data.errmsg);
+
+                }
+            });
+        })
+
+
+    </script>
 {% endblock %}
