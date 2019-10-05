@@ -40,6 +40,8 @@ class CartInfoView(LoginRequiredMixin, View):
         user = UserProfile.objects.get(username=username)
         try:
             cart_list = Cart.objects.filter(u_id_id=user.id)
+            for cart in cart_list:
+                cart.total = float(cart.g_id.price) * int(cart.count)
         except Cart.DoesNotExist:
             return
 
@@ -197,5 +199,26 @@ class OrderInfoView(LoginRequiredMixin, View):
         user = request.user
         if not user.is_authenticated:
             return JsonResponse({'res': 0, 'errmsg': '请先登录'})
+        total_price = request.POST.get('total_price')
+        total_count = request.POST.get('total_count')
 
-        return render(request, 'shop/pageJump.html')
+        user_id = user.id
+
+        pay_method = request.POST.get('pay_method')
+
+        u = UserProfile.objects.get(id=user.id)
+
+        print(total_count)
+        print(total_price)
+        try:
+            Order.objects.create(u_id_id=user_id, type='已支付', address=u.address, total_price=total_price,
+                                 count=int(total_count),
+                                 pay_method='在线支付' if pay_method == '1' else '货到付款')
+        except Exception as e:
+            return JsonResponse({'res': 0, 'errmsg': e})
+
+        return JsonResponse({'res': 1, 'message': '更新成功'})
+
+
+def page_jump(request):
+    return render(request, 'shop/pageJump.html')

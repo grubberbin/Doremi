@@ -18,7 +18,7 @@
         <div class="container">
             {% if goods_list %}
                 <div class="row clearfix">
-                    <form class="order" method="post" action="{% url "shop:order" %}">
+                    <div class="order" >
                         <div class="col-md-12 col-sm-12 col-xs-12">
                             <div class="order">
                                 <div class="default-title"><h2>商品列表</h2></div>
@@ -47,6 +47,10 @@
                                         <div class="col st-4">邮费</div>
                                         <div class="col st-4">0.0 元</div>
                                     </li>
+                                    <li class="postage clearfix">
+                                        <div class="col st-4">数量</div>
+                                        <div class="col st-4" id="count-total"></div>
+                                    </li>
                                     <li class="clearfix total">
                                         <div class="col st-3">合计</div>
                                         <div class="col st-3" id="order-total"></div>
@@ -64,23 +68,24 @@
                                     <ul>
                                         <li>
                                             <div class="radio-option">
-                                                <input type="radio" name="payment-group" id="payment-1">
+                                                <input type="radio" name="payment-method" checked="checked"
+                                                       id="payment-1" value="1">
                                                 <label for="payment-1"><strong>支付宝</strong></label>
                                             </div>
                                         </li>
                                         <li>
                                             <div class="radio-option">
-                                                <input type="radio" name="payment-group" id="payment-2">
+                                                <input type="radio" name="payment-method" id="payment-2" value="2">
                                                 <label for="payment-2"><strong>货到付款</strong></label>
                                             </div>
                                         </li>
                                     </ul>
                                 </div>
-                                <button class="theme-btn btn-style-one ">订单支付 <span
+                                <button class="theme-btn btn-style-one order-payment">订单支付 <span
                                         class="fa fa-long-arrow-right"></span></button>
                             </div><!--End Place Order-->
                         </div>
-                    </form>
+                    </div>
                 </div>
             {% else %}
                 <div class="button center">
@@ -98,13 +103,40 @@
         //计算总件数以及总价格
         function update_total_price() {
             total_price = 0;
+            total_count = 0;
+
             $('.goods-list').each(function () {
                 p_price = $(this).find('#sub-total').text();
                 total_price += parseFloat(p_price);
+                total_count += 1;
             });
-            $('#order-total').text(total_price.toFixed(1)+'元');
+            $('#order-total').text(total_price.toFixed(1) + '元');
+            $('#count-total').text(total_count + '件')
         }
 
         update_total_price();
+
+        $('.order-payment').click(function () {
+
+            pay_method = $("input[name='payment-method']:checked").val();
+            console.log(pay_method);
+            console.log(total_price);
+            console.log(total_count);
+            $.ajaxSettings.async = false;
+            $.post('/shop/order/', {
+                'total_price': total_price.toFixed(1),
+                'total_count': total_count,
+                'pay_method': pay_method
+            }, function (data) {
+                if (data.res == 1) {
+                    //alert(data.message);
+                    window.location.href ='/shop/jump'
+                } else {
+                    alert(data.errmsg);
+                }
+            })
+
+        })
+
     </script>
 {% endblock %}

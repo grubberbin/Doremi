@@ -54,16 +54,16 @@ class Order(models.Model):
         (8, '待收货')
     )
     PAY_METHOD_CHOICES = (
-        (1, "货到付款"),
-        (2, "支付宝"),
+        (1, "支付宝"),
+        (2, "货到付款"),
     )
-    id = models.CharField(verbose_name='订单id', primary_key=True, max_length=30, )
-    g_id = models.ForeignKey(to="Goods", to_field="id", on_delete=models.DO_NOTHING)
-    u_id = models.ForeignKey(to=UserProfile, verbose_name='用户id', null=False, on_delete=models.DO_NOTHING)
-    type = models.CharField(choices=Order_STATUS_CHOICES, verbose_name='订单状态', max_length=5)
+    id = models.AutoField(verbose_name='id', primary_key=True)
+    u_id = models.ForeignKey(to=UserProfile, verbose_name='用户', null=False, on_delete=models.DO_NOTHING)
+    type = models.CharField(null=False, blank=False, default='', verbose_name='订单状态', max_length=5)
     address = models.CharField(max_length=100, verbose_name='收货地址', null=False, blank=False)
     count = models.IntegerField(blank=False, null=False, verbose_name='商品数量', default=1)
-    pay_method = models.CharField(choices=PAY_METHOD_CHOICES, verbose_name='付款方式', max_length=10)
+    total_price = models.FloatField(blank=False, default=0.0, verbose_name='总价')
+    pay_method = models.CharField(null=False, blank=False, default='', verbose_name='付款方式', max_length=10)
     add_time = models.DateTimeField(default=datetime.now, verbose_name='添加时间')
 
     class Meta:

@@ -1,7 +1,7 @@
 from django.urls import path
 
 from .views import ShopInfoView, AddCartView, ProductInfoView, OrderInfoView, CartInfoView, UpdateCartView, \
-    DeleteCartView
+    DeleteCartView, page_jump
 
 app_name = 'shop'
 
@@ -15,4 +15,5 @@ urlpatterns = [
     path('order/', OrderInfoView.as_view(), name='order'),
     path('goods/<int:goods_id>/', ProductInfoView.as_view(), name='good_details'),
     path('details/', ProductInfoView.as_view(), name='details'),
+    path('jump/', page_jump)
 ]

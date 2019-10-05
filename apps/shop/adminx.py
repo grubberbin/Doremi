@@ -24,8 +24,8 @@ class GoodsManager(object):
 
 
 class OrdersManager(object):
-    list_display = ['id', 'g_id', 'u_id', 'type', 'count', 'pay_method']
-    search_fields = ['id', 'g_id', 'u_id']
+    list_display = ['id', 'u_id', 'type', 'total_price', 'count', 'pay_method', 'address', 'add_time']
+    search_fields = ['id', 'u_id']
     list_filter = ['type', 'pay_method']
 
 
