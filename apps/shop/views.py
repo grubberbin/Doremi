@@ -208,8 +208,6 @@ class OrderInfoView(LoginRequiredMixin, View):
 
         u = UserProfile.objects.get(id=user.id)
 
-        print(total_count)
-        print(total_price)
         try:
             Order.objects.create(u_id_id=user_id, type='已支付', address=u.address, total_price=total_price,
                                  count=int(total_count),
@@ -217,7 +215,12 @@ class OrderInfoView(LoginRequiredMixin, View):
         except Exception as e:
             return JsonResponse({'res': 0, 'errmsg': e})
 
-        return JsonResponse({'res': 1, 'message': '更新成功'})
+        try:
+            Cart.objects.filter(u_id_id=user_id).delete()
+        except Cart.DoesNotExist:
+            return JsonResponse({'res': 1, 'errmsg': '购物车删除失败'})
+
+        return JsonResponse({'res': 2, 'message': '更新成功'})
 
 
 def page_jump(request):
