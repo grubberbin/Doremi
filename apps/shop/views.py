@@ -216,7 +216,18 @@ class OrderInfoView(LoginRequiredMixin, View):
             return JsonResponse({'res': 0, 'errmsg': e})
 
         try:
-            Cart.objects.filter(u_id_id=user_id).delete()
+            cart = Cart.objects.filter(u_id_id=user_id)
+
+            for infor in cart.all():
+                try:
+                    g_info = Goods.objects.get(id=infor.g_id_id)
+                    if g_info.stock > 0 and g_info.stock > int(infor.count):
+                        Goods.objects.filter(id=infor.g_id_id).update(stock=g_info.stock - int(infor.count))
+                    else:
+                        return JsonResponse({'res': 3, 'errmsg': '库存不足'})
+                except Goods.DoesNotExist:
+                    return JsonResponse({'res': 4, 'errmsg': '商品不存在'})
+            cart.delete()
         except Cart.DoesNotExist:
             return JsonResponse({'res': 1, 'errmsg': '购物车删除失败'})
 
