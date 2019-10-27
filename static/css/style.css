@@ -4517,22 +4517,44 @@ body.popup-visible {
     margin-bottom: 100px;
 }
 
+.user-info .user-box span {
+    position: relative;
+    margin-bottom: 100px;
+    margin-left: 100px;
+}
+
+
 .user-info .user-box .user-form {
     margin-top: 6px;
+    margin-left: 50px;
 }
 
 .user-info .user-box .form-group {
     position: relative;
-    margin-bottom: 25px;
-    overflow: hidden;
+    margin-left: 20px;
 }
+
+.user-info .user-box h4 {
+    margin-bottom: 25px;
+    margin-left: 120px;
+    margin-top: 15px;
+}
+
+.user-info .user-box .user-info-gender {
+    position: relative;
+    margin-bottom: 25px;
+    margin-left: 120px;
+    margin-top: 15px;
+}
+
 
 .user-info .user-box input[type="text"],
 .user-info .user-box input[type="phone"],
 .user-info .user-box input[type="password"],
 .user-info .user-box select {
     position: relative;
-    width: 100%;
+    margin-left: 90px;
+    width: 50%;
     line-height: 24px;
     font-size: 14px;
     font-family: 'Open sans', sans-serif;
@@ -4549,12 +4571,13 @@ body.popup-visible {
     -o-transition: all 500ms ease;
 }
 
-.user-info .contact-box textarea {
+.user-info .user-box textarea {
     position: relative;
-    width: 100%;
+    width: 80%;
+    margin-left: 90px;
     line-height: 24px;
     padding: 20px 36px;
-    height: 180px;
+    height: 120px;
     resize: none;
     background: #fafafa;
     border: 1px solid #ececec;

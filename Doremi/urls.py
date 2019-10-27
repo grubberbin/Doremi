@@ -14,7 +14,7 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.urls import path
-from django.views.generic import TemplateView
+from rest_framework_swagger.views import get_swagger_view
 from django.conf.urls import include
 from django.conf.urls.static import static
 from django.conf import settings
@@ -22,8 +22,12 @@ from django.conf import settings
 import xadmin
 from users.views import LogoutView, LoginView, RegisterView, ForgetPwdView
 
+
+schema_view = get_swagger_view(title='API文档')
+
 urlpatterns = [
                   path('xadmin/', xadmin.site.urls),
+                  path(r'docs/', schema_view),
 
                   # 验证码
                   path('captcha/', include('captcha.urls')),
